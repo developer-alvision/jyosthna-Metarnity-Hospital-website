@@ -1717,20 +1717,64 @@ header.scrolled {
 }
 
 .contact-icon {
-  width: 54px;
-  height: 54px;
-  min-width: 54px;
-  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 8px 22px rgba(216, 27, 96, 0.35);
+  background: #ffffff;
+}
+
+.contact-icon-location {
+  background: #FFF5F5 !important;
+  border: 2px solid #EA4335 !important;
+  box-shadow: 0 8px 20px rgba(234, 67, 53, 0.2) !important;
+}
+
+.contact-icon-location svg {
+  stroke: #EA4335 !important;
+  color: #EA4335 !important;
+}
+
+.contact-icon-phone {
+  background: #FFF0F5 !important;
+  border: 2px solid #D81B60 !important;
+  box-shadow: 0 8px 20px rgba(216, 27, 96, 0.2) !important;
+}
+
+.contact-icon-phone svg {
+  stroke: #D81B60 !important;
+  color: #D81B60 !important;
+}
+
+.contact-icon-whatsapp {
+  background: #F0FDF4 !important;
+  border: 2px solid #25D366 !important;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25) !important;
+}
+
+.contact-icon-whatsapp svg {
+  fill: #25D366 !important;
+  color: #25D366 !important;
+}
+
+.contact-icon-instagram {
+  background: #FDF2F8 !important;
+  border: 2px solid #E4405F !important;
+  box-shadow: 0 8px 20px rgba(228, 64, 95, 0.2) !important;
+}
+
+.contact-icon-instagram svg {
+  stroke: #E4405F !important;
+  color: #E4405F !important;
 }
 
 .contact-icon svg {
   display: block;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
 }
 
 .contact-item-title {

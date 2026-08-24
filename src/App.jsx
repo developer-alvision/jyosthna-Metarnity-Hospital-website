@@ -27,12 +27,12 @@ import imgC1 from '../Coursael images/c1.png';
 import imgC2 from '../Coursael images/c2.png';
 import imgC3 from '../Coursael images/c3.png';
 
-const InstagramIcon = ({ style, className }) => (
+const InstagramIcon = ({ style, className, stroke = "currentColor" }) => (
   <svg 
     viewBox="0 0 24 24" 
     fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
+    stroke={stroke} 
+    strokeWidth="2.4" 
     strokeLinecap="round" 
     strokeLinejoin="round" 
     style={style} 
@@ -2226,7 +2226,7 @@ export default function App() {
                   <div className="contact-info-card glass-panel">
                     <div className="contact-details-list">
                       <div className="contact-item">
-                        <div className="contact-icon contact-icon-location" style={{ background: '#ffffff', border: '2px solid rgba(234, 67, 53, 0.25)', width: '56px', height: '56px', minWidth: '56px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(234, 67, 53, 0.15)' }}>
+                        <div className="contact-icon contact-icon-location">
                           <MapPin style={{ width: '28px', height: '28px', color: '#EA4335', stroke: '#EA4335', strokeWidth: 2.5 }} />
                         </div>
                         <div>
@@ -2236,7 +2236,7 @@ export default function App() {
                       </div>
 
                       <div className="contact-item">
-                        <div className="contact-icon contact-icon-phone" style={{ background: '#ffffff', border: '2px solid rgba(216, 27, 96, 0.25)', width: '56px', height: '56px', minWidth: '56px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(216, 27, 96, 0.15)' }}>
+                        <div className="contact-icon contact-icon-phone">
                           <Phone style={{ width: '28px', height: '28px', color: '#D81B60', stroke: '#D81B60', strokeWidth: 2.5 }} />
                         </div>
                         <div>
@@ -2246,7 +2246,7 @@ export default function App() {
                       </div>
 
                       <div className="contact-item">
-                        <div className="contact-icon contact-icon-whatsapp" style={{ background: '#ffffff', border: '2px solid rgba(37, 211, 102, 0.3)', width: '56px', height: '56px', minWidth: '56px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(37, 211, 102, 0.2)' }}>
+                        <div className="contact-icon contact-icon-whatsapp">
                           <WhatsAppIcon style={{ width: '30px', height: '30px', color: '#25D366', fill: '#25D366' }} />
                         </div>
                         <div>
@@ -2258,12 +2258,12 @@ export default function App() {
                       </div>
 
                       <div className="contact-item">
-                        <div className="contact-icon contact-icon-instagram" style={{ background: '#ffffff', border: '2px solid rgba(228, 64, 95, 0.25)', width: '56px', height: '56px', minWidth: '56px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(228, 64, 95, 0.15)' }}>
-                          <InstagramIcon style={{ width: '28px', height: '28px', color: '#E4405F', stroke: '#E4405F', strokeWidth: 2.5 }} />
+                        <div className="contact-icon contact-icon-instagram">
+                          <InstagramIcon stroke="#E4405F" style={{ width: '28px', height: '28px', color: '#E4405F' }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">Social Media Instagram</h4>
-                          <a href="http://instagram.com/jyothsnamaternity/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary-pink)', fontWeight: 700, textDecoration: 'none' }}>
+                          <a href="http://instagram.com/jyothsnamaternity/" target="_blank" rel="noopener noreferrer" style={{ color: '#E4405F', fontWeight: 700, textDecoration: 'none' }}>
                             Follow @jyothsnamaternity / @dr_jyothsna_rayal ↗
                           </a>
                         </div>
