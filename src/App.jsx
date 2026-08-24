@@ -2226,8 +2226,8 @@ export default function App() {
                   <div className="contact-info-card glass-panel">
                     <div className="contact-details-list">
                       <div className="contact-item">
-                        <div className="contact-icon" style={{ background: 'linear-gradient(135deg, #D81B60 0%, #AD1457 100%)', color: '#ffffff', width: '54px', height: '54px', minWidth: '54px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 22px rgba(216, 27, 96, 0.45)' }}>
-                          <MapPin style={{ width: '26px', height: '26px', color: '#ffffff', strokeWidth: 2.5 }} />
+                        <div className="contact-icon contact-icon-location" style={{ background: '#ffffff', border: '2px solid rgba(234, 67, 53, 0.25)', width: '56px', height: '56px', minWidth: '56px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(234, 67, 53, 0.15)' }}>
+                          <MapPin style={{ width: '28px', height: '28px', color: '#EA4335', stroke: '#EA4335', strokeWidth: 2.5 }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">Hospital Address</h4>
@@ -2236,8 +2236,8 @@ export default function App() {
                       </div>
 
                       <div className="contact-item">
-                        <div className="contact-icon" style={{ background: 'linear-gradient(135deg, #C2185B 0%, #880E4F 100%)', color: '#ffffff', width: '54px', height: '54px', minWidth: '54px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 22px rgba(194, 24, 91, 0.45)' }}>
-                          <Phone style={{ width: '26px', height: '26px', color: '#ffffff', strokeWidth: 2.5 }} />
+                        <div className="contact-icon contact-icon-phone" style={{ background: '#ffffff', border: '2px solid rgba(216, 27, 96, 0.25)', width: '56px', height: '56px', minWidth: '56px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(216, 27, 96, 0.15)' }}>
+                          <Phone style={{ width: '28px', height: '28px', color: '#D81B60', stroke: '#D81B60', strokeWidth: 2.5 }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">Phone Helplines</h4>
@@ -2246,8 +2246,8 @@ export default function App() {
                       </div>
 
                       <div className="contact-item">
-                        <div className="contact-icon" style={{ background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)', color: '#ffffff', width: '54px', height: '54px', minWidth: '54px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 22px rgba(37, 211, 102, 0.45)' }}>
-                          <WhatsAppIcon style={{ width: '28px', height: '28px', color: '#ffffff' }} />
+                        <div className="contact-icon contact-icon-whatsapp" style={{ background: '#ffffff', border: '2px solid rgba(37, 211, 102, 0.3)', width: '56px', height: '56px', minWidth: '56px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(37, 211, 102, 0.2)' }}>
+                          <WhatsAppIcon style={{ width: '30px', height: '30px', color: '#25D366', fill: '#25D366' }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">WhatsApp Direct Support</h4>
@@ -2258,8 +2258,8 @@ export default function App() {
                       </div>
 
                       <div className="contact-item">
-                        <div className="contact-icon" style={{ background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', width: '54px', height: '54px', minWidth: '54px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 22px rgba(220, 39, 67, 0.45)' }}>
-                          <InstagramIcon style={{ width: '26px', height: '26px', color: '#ffffff' }} />
+                        <div className="contact-icon contact-icon-instagram" style={{ background: '#ffffff', border: '2px solid rgba(228, 64, 95, 0.25)', width: '56px', height: '56px', minWidth: '56px', borderRadius: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 20px rgba(228, 64, 95, 0.15)' }}>
+                          <InstagramIcon style={{ width: '28px', height: '28px', color: '#E4405F', stroke: '#E4405F', strokeWidth: 2.5 }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">Social Media Instagram</h4>

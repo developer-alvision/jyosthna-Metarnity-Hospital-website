@@ -1729,12 +1729,8 @@ header.scrolled {
 }
 
 .contact-icon svg {
-  color: #ffffff !important;
-  width: 26px !important;
-  height: 26px !important;
-  stroke: #ffffff !important;
-  stroke-width: 2.4px !important;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+  display: block;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
 }
 
 .contact-item-title {
