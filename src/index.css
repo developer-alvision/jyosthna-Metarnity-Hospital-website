@@ -175,8 +175,7 @@ body {
 
 .glass-panel .flow-stage-icon-box,
 .glass-panel .facility-icon-wrap,
-.glass-panel .philosophy-icon,
-.glass-panel .contact-icon {
+.glass-panel .philosophy-icon {
   background: rgba(255, 255, 255, 0.2) !important;
   color: #ffffff !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
@@ -2486,24 +2485,72 @@ footer {
    HIGH CONTRAST VIBRANT CONTACT ICON LOGOS FIX
    ═══════════════════════════════════════════════════════════════ */
 .contact-icon {
-  background: linear-gradient(135deg, #D81B60 0%, #880E4F 100%) !important;
-  color: #ffffff !important;
-  width: 54px !important;
-  height: 54px !important;
-  min-width: 54px !important;
-  border-radius: 16px !important;
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  border-radius: 18px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 8px 22px rgba(216, 27, 96, 0.4) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.contact-icon svg {
-  width: 26px !important;
-  height: 26px !important;
+.contact-icon-location {
+  background: linear-gradient(135deg, #EA4335 0%, #C5221F 100%) !important;
+  box-shadow: 0 8px 22px rgba(234, 67, 53, 0.4) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+.contact-icon-location svg {
+  width: 28px !important;
+  height: 28px !important;
   color: #ffffff !important;
   stroke: #ffffff !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
+}
+
+.contact-icon-phone {
+  background: linear-gradient(135deg, #D81B60 0%, #AD1457 100%) !important;
+  box-shadow: 0 8px 22px rgba(216, 27, 96, 0.4) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+.contact-icon-phone svg {
+  width: 28px !important;
+  height: 28px !important;
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
+}
+
+.contact-icon-whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.4) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+.contact-icon-whatsapp svg {
+  width: 28px !important;
+  height: 28px !important;
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: none !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
+}
+
+.contact-icon-instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+  box-shadow: 0 8px 22px rgba(220, 39, 67, 0.4) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+.contact-icon-instagram svg {
+  width: 28px !important;
+  height: 28px !important;
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════

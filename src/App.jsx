@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Award, ShieldAlert, HeartHandshake, ScanLine, Activity, HeartPulse, Beaker, Pill, BedDouble, 
+  Award, ShieldAlert, HeartHandshake, Activity, HeartPulse, Beaker, Pill, BedDouble, 
   MapPin, Phone, CheckCircle2,
   Menu, X, Clock, Sparkles, User, Play, Star
 } from 'lucide-react';
@@ -16,16 +16,15 @@ import imgPcod from './assets/images/Service Images/pcod.jpeg';
 import imgThyroid from './assets/images/Service Images/thyroid.jpeg';
 import imgRecanalization from './assets/images/Service Images/tubal recanalization.jpeg';
 
-import imgUltrasound from './assets/images/Facilities/ultra sound scanning.jpeg';
 import imgCtg from './assets/images/Facilities/CTG.jpeg';
 import videoEcg from './assets/images/Facilities/ECG.mp4';
 import imgLab from './assets/images/Facilities/lab.jpeg';
 import imgPharmacy from './assets/images/Facilities/PHARMACY (2).jpeg';
 
-// User-Provided Carousel Images
-import imgC1 from '../Coursael images/c1.png';
-import imgC2 from '../Coursael images/c2.png';
-import imgC3 from '../Coursael images/c3.png';
+// User-Provided Carousel Images (Latest Updated Banners)
+import imgC1 from './assets/carousel/c1.png';
+import imgC2 from './assets/carousel/c2.png';
+import imgC3 from './assets/carousel/c3.png';
 
 const InstagramIcon = ({ style, className, stroke = "currentColor" }) => (
   <svg 
@@ -75,7 +74,7 @@ export default function App() {
       subtitle: "High-Definition 4D Scans & Organ Monitoring",
       desc: "Early pregnancy viability checks, baby organ mapping, and egg growth follicular tracking.",
       image: imgC2,
-      ctaPrimary: "Explore Ultra Scan",
+      ctaPrimary: "Explore Facilities",
       ctaSecondary: "View Facilities"
     },
     {
@@ -238,7 +237,7 @@ export default function App() {
   const [checkedPackingItems, setCheckedPackingItems] = useState({});
   const [faqSearchQuery, setFaqSearchQuery] = useState('');
   const [faqCategoryFilter, setFaqCategoryFilter] = useState('all');
-  const [openFaqIds, setOpenFaqIds] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [openFaqIds, setOpenFaqIds] = useState([]);
 
   const toggleFaqId = (id) => {
     setOpenFaqIds(prev => 
@@ -259,7 +258,7 @@ export default function App() {
       id: 1,
       category: 'OPD & Appointments',
       question: "What are Dr. Jyothsna Rayal's OPD consultation timings and hospital location?",
-      answer: "Dr. Jyothsna Rayal MS (OBG) is available for OPD consultation Monday through Saturday from 9:00 AM to 4:00 PM at Jyothsna Maternity Hospital, Kalani Ring Road, Madanapalle. Emergency casualty, labor rooms, and surgical OTs operate 24/7."
+      answer: "Dr. Jyothsna Rayal MS (OBG) is available for OPD consultation Monday through Saturday from 9:00 AM to 4:00 PM at Jyothsna Maternity Hospital, Door Number 2-253-D_5-1 (Op Building), Opp Line to Touch Ice Cream Parlour, Society Colony, Madanapalle-517325, Andhra Pradesh. Emergency casualty, labor rooms, and surgical OTs operate 24/7."
     },
     {
       id: 2,
@@ -322,24 +321,6 @@ export default function App() {
   };
 
   const facilityDataMap = {
-    ultrasound: {
-      title: "Ultra Scan",
-      subtitle: "High-resolution 4D fetal imaging & organ checks",
-      badge: "Ultrasound Scanning",
-      image: imgUltrasound,
-      icon: <ScanLine style={{ width: '28px', height: '28px' }} />,
-      desc: "High-definition anatomical scanning for fetal organ checks, baby growth, and follicular monitoring.",
-      features: [
-        "4D Scan for Fetal Organ & Growth Checks",
-        "Egg Growth Scans (Follicular Monitoring)",
-        "Early Pregnancy Viability & Heartbeat Check",
-        "Placenta & Baby Blood Flow Measurement"
-      ],
-      statNum: "4D HD",
-      statLbl: "High-Resolution Scan",
-      gradient: "linear-gradient(135deg, #D81B60 0%, #AD1457 100%)",
-      graphicIcon: <ScanLine style={{ width: '110px', height: '110px', opacity: 0.15, position: 'absolute', right: '20px', bottom: '20px', color: '#ffffff' }} />
-    },
     monitoring: {
       title: "ECG & CTG",
       subtitle: "Continuous baby heartbeat & contraction monitoring",
@@ -849,6 +830,49 @@ export default function App() {
               </div>
             </section>
 
+            {/* SECTION 2: LANDING PAGE PREGNANCY DUE DATE CALCULATOR */}
+            <section className="section section-pink" id="calculator-landing-section" style={{ padding: '3.5rem 0 4rem', background: 'linear-gradient(135deg, #FFF0F5 0%, #FCE4EC 100%)' }}>
+              <div className="container">
+                <span className="sec-tag" style={{ textAlign: 'center', marginBottom: '6px' }}>Estimate Your Delivery Window</span>
+                <h2 className="sec-title" style={{ textAlign: 'center', marginBottom: '1.8rem' }}>
+                  Pregnancy Due Date <span>(EDD) Calculator</span>
+                </h2>
+                <div className="glass-panel" style={{ padding: '2.5rem 2.8rem', borderRadius: '24px', maxWidth: '750px', margin: '0 auto', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.1)', border: '2px solid rgba(216, 27, 96, 0.2)', background: '#ffffff' }}>
+                  <form onSubmit={handleEddCalculate}>
+                    <div className="form-group" style={{ marginBottom: '1.8rem' }}>
+                      <label className="form-label" style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--deep-rose)', display: 'block', marginBottom: '10px' }}>
+                        Select First Day of Last Menstrual Period (LMP)
+                      </label>
+                      <input 
+                        type="date" 
+                        className="form-input" 
+                        value={lmpDate} 
+                        onChange={(e) => setLmpDate(e.target.value)} 
+                        required 
+                        style={{ width: '100%', padding: '14px 20px', borderRadius: '14px', border: '1.5px solid var(--primary-pink)', fontSize: '1rem', background: '#ffffff' }}
+                      />
+                    </div>
+                    <button type="submit" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', padding: '14px 20px', fontSize: '1.05rem', fontWeight: 700 }}>
+                      Calculate Estimated Due Date 📅
+                    </button>
+                  </form>
+
+                  {eddResult && (
+                    <div style={{ marginTop: '2rem', background: 'var(--light-pink)', padding: '1.8rem', borderRadius: '20px', border: '2px solid var(--primary-pink)', textAlign: 'center', boxShadow: '0 8px 25px rgba(216, 27, 96, 0.15)' }}>
+                      <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', color: 'var(--primary-pink)', fontWeight: 800, letterSpacing: '1px' }}>Estimated Delivery Date (EDD)</span>
+                      <div style={{ fontSize: '2.2rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', fontWeight: 800, margin: '8px 0' }}>
+                        {eddResult.dateStr}
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '12px', fontSize: '1rem', color: 'var(--text-dark)', flexWrap: 'wrap' }}>
+                        <span>Current Stage: <strong>{eddResult.weeks} Weeks Pregnant</strong></span>
+                        <span>Days Remaining: <strong>{eddResult.daysLeft} Days</strong></span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
+
             {/* SECTION 3: Maternal Care & Wellness Section */}
             <section className="care-journey-section" id="maternal-care">
               <div className="container" style={{ position: 'relative', zIndex: 2 }}>
@@ -916,29 +940,9 @@ export default function App() {
               <div className="container">
                 <h2 className="sec-title">State-of-the-Art <span>Clinical Infrastructure</span></h2>
 
-                {/* SINGLE ROW SLEEK GRID FOR ALL 4 INFRASTRUCTURE CARDS */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.2rem' }}>
-                  {/* Card 1: Ultra Scan */}
-                  <div className="advantage-card-3d" style={{ padding: '1.4rem', borderRadius: '22px' }}>
-                    <div>
-                      {/* Photo Visual Banner */}
-                      <div style={{ width: '100%', height: '110px', borderRadius: '16px', marginBottom: '1rem', position: 'relative', overflow: 'hidden', border: '1px solid rgba(216,27,96,0.2)', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>
-                        <img src={imgUltrasound} alt="Ultra Scan" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      </div>
-
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
-                        <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'var(--light-pink)', color: 'var(--primary-pink)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <ScanLine style={{ width: '18px', height: '18px' }} />
-                        </div>
-                        <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--primary-pink)', background: 'var(--light-pink)', padding: '3px 10px', borderRadius: '12px' }}>4D SCAN</span>
-                      </div>
-                      <h3 style={{ fontSize: '1.15rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-sans)', fontWeight: 700, marginBottom: '6px' }}>Ultra Scan</h3>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, margin: 0 }}>4D HD anatomical scanning for baby organ checks and growth monitoring.</p>
-                    </div>
-                    <button onClick={() => navigateTo('facilities')} style={{ background: 'none', border: 'none', color: 'var(--primary-pink)', fontWeight: 700, cursor: 'pointer', fontSize: '0.9rem', marginTop: '1rem', textAlign: 'left', padding: 0 }}>Explore Ultra Scan →</button>
-                  </div>
-
-                  {/* Card 2: Operation Theatre */}
+                {/* SINGLE ROW SLEEK GRID FOR INFRASTRUCTURE CARDS */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.2rem' }}>
+                  {/* Card 1: Operation Theatre */}
                   <div className="advantage-card-3d" style={{ padding: '1.4rem', borderRadius: '22px' }}>
                     <div>
                       {/* Photo Visual Banner */}
@@ -1008,8 +1012,8 @@ export default function App() {
                 <span className="sec-tag">Specialized Care Directory</span>
                 <h2 className="sec-title">Explore Our <span>Specialities</span></h2>
 
-                {/* SINGLE HORIZONTAL ROW GRID FOR ALL 4 SPECIALITY CARDS */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.2rem', marginBottom: '2.5rem' }}>
+                {/* SINGLE HORIZONTAL ROW GRID FOR SPECIALITY CARDS */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.2rem', marginBottom: '2.5rem' }}>
                   <div className="advantage-card-3d" style={{ padding: '1.5rem 1.2rem', borderRadius: '22px' }}>
                     <User style={{ width: '32px', height: '32px', color: 'var(--primary-pink)', marginBottom: '10px' }} />
                     <h3 style={{ fontSize: '1.1rem', color: 'var(--deep-rose)', fontWeight: 700, marginBottom: '6px' }}>OBG & Antenatal Checkup</h3>
@@ -1021,13 +1025,6 @@ export default function App() {
                     <ShieldAlert style={{ width: '32px', height: '32px', color: 'var(--primary-pink)', marginBottom: '10px' }} />
                     <h3 style={{ fontSize: '1.1rem', color: 'var(--deep-rose)', fontWeight: 700, marginBottom: '6px' }}>High-Risk Delivery Care</h3>
                     <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '0.8rem' }}>Clinical tracking for hypertension, gestational diabetes, thyroid, and twin births.</p>
-                    <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', color: 'var(--primary-pink)', fontWeight: 700, cursor: 'pointer', fontSize: '0.95rem', padding: 0 }}>Learn More →</button>
-                  </div>
-
-                  <div className="advantage-card-3d" style={{ padding: '1.5rem 1.2rem', borderRadius: '22px' }}>
-                    <ScanLine style={{ width: '32px', height: '32px', color: 'var(--primary-pink)', marginBottom: '10px' }} />
-                    <h3 style={{ fontSize: '1.1rem', color: 'var(--deep-rose)', fontWeight: 700, marginBottom: '6px' }}>4D Anomaly Ultrasound</h3>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '0.8rem' }}>High-definition organ screening, growth Doppler checks, and follicular tracking.</p>
                     <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', color: 'var(--primary-pink)', fontWeight: 700, cursor: 'pointer', fontSize: '0.95rem', padding: 0 }}>Learn More →</button>
                   </div>
 
@@ -1200,7 +1197,7 @@ export default function App() {
                     <div>
                       {/* Photography Header */}
                       <div style={{ width: '100%', height: '115px', borderRadius: '14px', overflow: 'hidden', marginBottom: '0.8rem', position: 'relative', boxShadow: '0 6px 18px rgba(216, 27, 96, 0.15)', border: '1.5px solid rgba(216, 27, 96, 0.2)' }}>
-                        <img src="/service_vaccination.jpg" alt="Prenatal Vaccination Care" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+                        <img src={imgLab} alt="Prenatal Vaccination Care" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.8) 100%)' }}></div>
                         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '6px 10px', color: '#ffffff', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
                           ✦ Stage 01 • Immunization
@@ -1244,16 +1241,16 @@ export default function App() {
                       cursor: 'pointer',
                       display: 'flex',
                       flexDirection: 'column',
-                      justify: 'space-between'
+                      justifyContent: 'space-between'
                     }}
                   >
                     <div>
                       {/* Photography Header */}
                       <div style={{ width: '100%', height: '115px', borderRadius: '14px', overflow: 'hidden', marginBottom: '0.8rem', position: 'relative', boxShadow: '0 6px 18px rgba(216, 27, 96, 0.15)', border: '1.5px solid rgba(216, 27, 96, 0.2)' }}>
-                        <img src="/service_ultrasound.jpg" alt="4D Anomaly Ultrasound Scanning" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+                        <img src={imgHighRisk} alt="Obstetric Growth Scanning" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.8) 100%)' }}></div>
                         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '6px 10px', color: '#ffffff', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
-                          ✦ Stage 02 • 4D Anomaly Scan
+                          ✦ Stage 02 • Fetal Health Check
                         </div>
                       </div>
 
@@ -1267,13 +1264,13 @@ export default function App() {
                       </div>
 
                       <h3 style={{ fontSize: '1.1rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', margin: '0 0 10px', fontWeight: 700, lineHeight: 1.25 }}>
-                        Ultrasound & Growth Mapping
+                        Anatomy & Growth Mapping
                       </h3>
                     </div>
 
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', paddingTop: '0.8rem', borderTop: '1.5px dashed rgba(216, 27, 96, 0.2)' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--light-pink)', padding: '6px 10px', borderRadius: '10px', fontSize: '0.78rem', fontWeight: 600, color: 'var(--deep-rose)' }}>
-                        <CheckCircle2 style={{ width: '15px', height: '15px', color: 'var(--primary-pink)', flexShrink: 0 }} /> 4D Anomaly Scan (18-22 Wks)
+                        <CheckCircle2 style={{ width: '15px', height: '15px', color: 'var(--primary-pink)', flexShrink: 0 }} /> Organ Growth Check (18-22 Wks)
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--light-pink)', padding: '6px 10px', borderRadius: '10px', fontSize: '0.78rem', fontWeight: 600, color: 'var(--deep-rose)' }}>
                         <CheckCircle2 style={{ width: '15px', height: '15px', color: 'var(--primary-pink)', flexShrink: 0 }} /> Color Doppler & Heartbeat
@@ -1300,7 +1297,7 @@ export default function App() {
                     <div>
                       {/* Photography Header */}
                       <div style={{ width: '100%', height: '115px', borderRadius: '14px', overflow: 'hidden', marginBottom: '0.8rem', position: 'relative', boxShadow: '0 6px 18px rgba(216, 27, 96, 0.15)', border: '1.5px solid rgba(216, 27, 96, 0.2)' }}>
-                        <img src="/service_delivery_prep.jpg" alt="Child Grows & Delivery Prep" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+                        <img src={imgCtg} alt="Child Grows & Delivery Prep" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.8) 100%)' }}></div>
                         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '6px 10px', color: '#ffffff', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
                           ✦ Stage 03 • Delivery Prep
@@ -1350,7 +1347,7 @@ export default function App() {
                     <div>
                       {/* Photography Header */}
                       <div style={{ width: '100%', height: '115px', borderRadius: '14px', overflow: 'hidden', marginBottom: '0.8rem', position: 'relative', boxShadow: '0 6px 18px rgba(216, 27, 96, 0.15)', border: '1.5px solid rgba(216, 27, 96, 0.2)' }}>
-                        <img src="/service_happy_family.jpg" alt="Happy Family & Postpartum Care" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+                        <img src={imgNormalDelivery} alt="Happy Family & Postpartum Care" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.8) 100%)' }}></div>
                         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '6px 10px', color: '#ffffff', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.5px', textTransform: 'uppercase' }}>
                           ✦ Stage 04 • Postpartum Care
@@ -1785,7 +1782,7 @@ export default function App() {
                           Follow Dr. Jyothsna Rayal MS (OBG) on Instagram for daily advice on pregnancy care, trimester tracking, painless delivery tips, and real patient stories.
                         </p>
                       </div>
-                      <a href="https://www.instagram.com/dr_jyothsna_rayal/" target="_blank" rel="noopener noreferrer" className="cta-button-white" style={{ position: 'relative', zIndex: 2, background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', border: 'none', padding: '12px 24px', fontSize: '0.92rem', borderRadius: '30px', boxShadow: '0 8px 20px rgba(0,0,0,0.3)', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', fontWeight: 700 }}>
+                      <a href="https://www.instagram.com/jyothsnamaternity/" target="_blank" rel="noopener noreferrer" className="cta-button-white" style={{ position: 'relative', zIndex: 2, background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', border: 'none', padding: '12px 24px', fontSize: '0.92rem', borderRadius: '30px', boxShadow: '0 8px 20px rgba(0,0,0,0.3)', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', fontWeight: 700 }}>
                         <InstagramIcon style={{ width: '20px', height: '20px' }} /> Open Instagram Page ↗
                       </a>
                     </div>
@@ -1794,11 +1791,11 @@ export default function App() {
                       {/* Card 1 */}
                       <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
                         <a href="https://www.instagram.com/reel/DXRdvdhCUuv/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #AD1457 0%, #880E4F 100%)' }}>
-                          <img src="https://images.weserv.nl/?url=https://www.instagram.com/p/DXRdvdhCUuv/media/?size=l" alt="9th Month Care Reel Thumbnail" onError={(e) => { e.target.style.opacity = '0'; }} style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, #880E4F 0%, #AD1457 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 1 }}>
+                          <img src={imgHighRisk} alt="9th Month Care Reel Thumbnail" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
+                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(136, 14, 79, 0.85) 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 3 }}>
                             <ShieldAlert style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
                             <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0 }}>Entering 9th Month Precautions</h4>
+                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Entering 9th Month Precautions</h4>
                           </div>
                           <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
@@ -1820,11 +1817,11 @@ export default function App() {
                       {/* Card 2 */}
                       <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
                         <a href="https://www.instagram.com/reel/DcOVEsvplqV/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #880E4F 0%, #AD1457 100%)' }}>
-                          <img src="https://images.weserv.nl/?url=https://www.instagram.com/p/DcOVEsvplqV/media/?size=l" alt="Husband Role Reel Thumbnail" onError={(e) => { e.target.style.opacity = '0'; }} style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, #880E4F 0%, #AD1457 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 1 }}>
+                          <img src={imgNormalDelivery} alt="Husband Role Reel Thumbnail" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
+                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(136, 14, 79, 0.85) 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 3 }}>
                             <HeartHandshake style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
                             <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0 }}>Husband's Role During Pregnancy</h4>
+                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Husband's Role During Pregnancy</h4>
                           </div>
                           <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
@@ -1846,11 +1843,11 @@ export default function App() {
                       {/* Card 3 */}
                       <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
                         <a href="https://www.instagram.com/reel/DbN6N_qphkB/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #D81B60 0%, #C2185B 100%)' }}>
-                          <img src="https://images.weserv.nl/?url=https://www.instagram.com/p/DbN6N_qphkB/media/?size=l" alt="Exercises for Normal Delivery Thumbnail" onError={(e) => { e.target.style.opacity = '0'; }} style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, #D81B60 0%, #C2185B 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 1 }}>
+                          <img src={imgFertility} alt="Exercises for Normal Delivery Thumbnail" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
+                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(136, 14, 79, 0.85) 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 3 }}>
                             <Activity style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
                             <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0 }}>Exercises for Normal Delivery</h4>
+                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Exercises for Normal Delivery</h4>
                           </div>
                           <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
@@ -1864,81 +1861,6 @@ export default function App() {
                           <h4 className="blog-title" style={{ fontSize: '1.2rem', color: 'var(--deep-rose)', margin: '6px 0 8px' }}>Exercises for Normal Delivery</h4>
                           <p className="blog-excerpt" style={{ fontSize: '0.88rem', color: 'var(--text-dark)', lineHeight: 1.5, marginBottom: '1.2rem' }}>Safe pelvic floor and gentle stretching routines recommended for natural birth.</p>
                           <a href="https://www.instagram.com/reel/DbN6N_qphkB/" target="_blank" rel="noopener noreferrer" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', fontSize: '0.82rem', padding: '10px 16px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none' }}>
-                            <InstagramIcon style={{ width: '16px', height: '16px' }} /> Watch Reel on Instagram ↗
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Card 4 */}
-                      <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
-                        <a href="https://www.instagram.com/dr_jyothsna_rayal/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #1A0510 0%, #3D0821 100%)' }}>
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 1 }}>
-                            <ScanLine style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
-                            <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0 }}>4D Anomaly Scan & Growth Tracking</h4>
-                          </div>
-                          <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
-                          </span>
-                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.92)', color: 'var(--primary-pink)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, boxShadow: '0 8px 20px rgba(0,0,0,0.3)' }}>
-                            <Play style={{ width: '30px', height: '30px', fill: 'var(--primary-pink)', marginLeft: '4px' }} />
-                          </div>
-                        </a>
-                        <div className="blog-body" style={{ padding: '1.5rem' }}>
-                          <span className="blog-tag">Fetal Scan • Diagnostic</span>
-                          <h4 className="blog-title" style={{ fontSize: '1.2rem', color: 'var(--deep-rose)', margin: '6px 0 8px' }}>4D Anomaly Scan & Fetal Health</h4>
-                          <p className="blog-excerpt" style={{ fontSize: '0.88rem', color: 'var(--text-dark)', lineHeight: 1.5, marginBottom: '1.2rem' }}>How 4D ultrasound scans help detect fetal growth milestones and anatomical development.</p>
-                          <a href="https://www.instagram.com/dr_jyothsna_rayal/" target="_blank" rel="noopener noreferrer" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', fontSize: '0.82rem', padding: '10px 16px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none' }}>
-                            <InstagramIcon style={{ width: '16px', height: '16px' }} /> Watch Reel on Instagram ↗
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Card 5 */}
-                      <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
-                        <a href="https://www.instagram.com/dr_jyothsna_rayal/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #0A1128 0%, #1C2541 100%)' }}>
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 1 }}>
-                            <Sparkles style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
-                            <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0 }}>Maternal Nutrition & Diet Guide</h4>
-                          </div>
-                          <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
-                          </span>
-                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.92)', color: 'var(--primary-pink)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, boxShadow: '0 8px 20px rgba(0,0,0,0.3)' }}>
-                            <Play style={{ width: '30px', height: '30px', fill: 'var(--primary-pink)', marginLeft: '4px' }} />
-                          </div>
-                        </a>
-                        <div className="blog-body" style={{ padding: '1.5rem' }}>
-                          <span className="blog-tag">Nutrition • Maternal Wellness</span>
-                          <h4 className="blog-title" style={{ fontSize: '1.2rem', color: 'var(--deep-rose)', margin: '6px 0 8px' }}>Pregnancy Diet & Nutrition Essentials</h4>
-                          <p className="blog-excerpt" style={{ fontSize: '0.88rem', color: 'var(--text-dark)', lineHeight: 1.5, marginBottom: '1.2rem' }}>Essential vitamins, iron supplements, and balanced meals for trimester health.</p>
-                          <a href="https://www.instagram.com/dr_jyothsna_rayal/" target="_blank" rel="noopener noreferrer" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', fontSize: '0.82rem', padding: '10px 16px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none' }}>
-                            <InstagramIcon style={{ width: '16px', height: '16px' }} /> Watch Reel on Instagram ↗
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Card 6 */}
-                      <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
-                        <a href="https://www.instagram.com/dr_jyothsna_rayal/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #051A10 0%, #0F3D21 100%)' }}>
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 1 }}>
-                            <HeartPulse style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
-                            <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0 }}>Normal Delivery vs Painless Birth</h4>
-                          </div>
-                          <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
-                          </span>
-                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.92)', color: 'var(--primary-pink)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, boxShadow: '0 8px 20px rgba(0,0,0,0.3)' }}>
-                            <Play style={{ width: '30px', height: '30px', fill: 'var(--primary-pink)', marginLeft: '4px' }} />
-                          </div>
-                        </a>
-                        <div className="blog-body" style={{ padding: '1.5rem' }}>
-                          <span className="blog-tag">Labor • Painless Delivery</span>
-                          <h4 className="blog-title" style={{ fontSize: '1.2rem', color: 'var(--deep-rose)', margin: '6px 0 8px' }}>Normal Delivery Myths & Facts</h4>
-                          <p className="blog-excerpt" style={{ fontSize: '0.88rem', color: 'var(--text-dark)', lineHeight: 1.5, marginBottom: '1.2rem' }}>Understanding epidural pain relief and natural delivery preparation with Dr. Jyothsna.</p>
-                          <a href="https://www.instagram.com/dr_jyothsna_rayal/" target="_blank" rel="noopener noreferrer" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', fontSize: '0.82rem', padding: '10px 16px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none' }}>
                             <InstagramIcon style={{ width: '16px', height: '16px' }} /> Watch Reel on Instagram ↗
                           </a>
                         </div>
@@ -1982,47 +1904,6 @@ export default function App() {
                           <li>24/7 Casualty & emergency room readiness</li>
                         </ul>
                       </div>
-                    </div>
-                  </div>
-
-                  {/* LANDING PAGE PREGNANCY DUE DATE CALCULATOR */}
-                  <div id="calculator-landing-section" style={{ borderTop: '2px dashed rgba(216, 27, 96, 0.15)', paddingTop: '3.5rem', marginTop: '3.5rem' }}>
-                    <span className="sec-tag" style={{ textAlign: 'center', marginBottom: '6px' }}>Estimate Your Delivery Window</span>
-                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--deep-rose)', textAlign: 'center', marginBottom: '1.8rem', fontWeight: 700 }}>
-                      Pregnancy Due Date (EDD) Calculator
-                    </h3>
-                    <div className="glass-panel" style={{ padding: '2.8rem', borderRadius: '24px', maxWidth: '750px', margin: '0 auto', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.1)', border: '2px solid rgba(216, 27, 96, 0.2)' }}>
-                      <form onSubmit={handleEddCalculate}>
-                        <div className="form-group" style={{ marginBottom: '1.8rem' }}>
-                          <label className="form-label" style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--deep-rose)', display: 'block', marginBottom: '10px' }}>
-                            Select First Day of Last Menstrual Period (LMP)
-                          </label>
-                          <input 
-                            type="date" 
-                            className="form-input" 
-                            value={lmpDate} 
-                            onChange={(e) => setLmpDate(e.target.value)} 
-                            required 
-                            style={{ width: '100%', padding: '14px 20px', borderRadius: '14px', border: '1.5px solid var(--primary-pink)', fontSize: '1rem', background: '#ffffff' }}
-                          />
-                        </div>
-                        <button type="submit" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', padding: '14px 20px', fontSize: '1.05rem', fontWeight: 700 }}>
-                          Calculate Estimated Due Date 📅
-                        </button>
-                      </form>
-
-                      {eddResult && (
-                        <div style={{ marginTop: '2rem', background: 'var(--light-pink)', padding: '1.8rem', borderRadius: '20px', border: '2px solid var(--primary-pink)', textAlign: 'center', boxShadow: '0 8px 25px rgba(216, 27, 96, 0.15)' }}>
-                          <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', color: 'var(--primary-pink)', fontWeight: 800, letterSpacing: '1px' }}>Estimated Delivery Date (EDD)</span>
-                          <div style={{ fontSize: '2.2rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', fontWeight: 800, margin: '8px 0' }}>
-                            {eddResult.dateStr}
-                          </div>
-                          <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '12px', fontSize: '1rem', color: 'var(--text-dark)', flexWrap: 'wrap' }}>
-                            <span>Current Stage: <strong>{eddResult.weeks} Weeks Pregnant</strong></span>
-                            <span>Days Remaining: <strong>{eddResult.daysLeft} Days</strong></span>
-                          </div>
-                        </div>
-                      )}
                     </div>
                   </div>
 
@@ -2227,17 +2108,17 @@ export default function App() {
                     <div className="contact-details-list">
                       <div className="contact-item">
                         <div className="contact-icon contact-icon-location">
-                          <MapPin style={{ width: '28px', height: '28px', color: '#EA4335', stroke: '#EA4335', strokeWidth: 2.5 }} />
+                          <MapPin style={{ width: '28px', height: '28px', color: '#ffffff', stroke: '#ffffff', strokeWidth: 2.4 }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">Hospital Address</h4>
-                          <p className="contact-item-text">Kalani Ring Road, Near Old Bus Stand, Madanapalle, Andhra Pradesh 517325</p>
+                          <p className="contact-item-text">Door Number 2-253-D_5-1 (Op Building), Opp Line to Touch Ice Cream Parlour, Society Colony, Madanapalle-517325, Andhra Pradesh</p>
                         </div>
                       </div>
 
                       <div className="contact-item">
                         <div className="contact-icon contact-icon-phone">
-                          <Phone style={{ width: '28px', height: '28px', color: '#D81B60', stroke: '#D81B60', strokeWidth: 2.5 }} />
+                          <Phone style={{ width: '28px', height: '28px', color: '#ffffff', stroke: '#ffffff', strokeWidth: 2.4 }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">Phone Helplines</h4>
@@ -2247,7 +2128,7 @@ export default function App() {
 
                       <div className="contact-item">
                         <div className="contact-icon contact-icon-whatsapp">
-                          <WhatsAppIcon style={{ width: '30px', height: '30px', color: '#25D366', fill: '#25D366' }} />
+                          <WhatsAppIcon style={{ width: '28px', height: '28px', color: '#ffffff', fill: '#ffffff' }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">WhatsApp Direct Support</h4>
@@ -2259,12 +2140,12 @@ export default function App() {
 
                       <div className="contact-item">
                         <div className="contact-icon contact-icon-instagram">
-                          <InstagramIcon stroke="#E4405F" style={{ width: '28px', height: '28px', color: '#E4405F' }} />
+                          <InstagramIcon stroke="#ffffff" style={{ width: '28px', height: '28px', color: '#ffffff' }} />
                         </div>
                         <div>
                           <h4 className="contact-item-title">Social Media Instagram</h4>
-                          <a href="http://instagram.com/jyothsnamaternity/" target="_blank" rel="noopener noreferrer" style={{ color: '#E4405F', fontWeight: 700, textDecoration: 'none' }}>
-                            Follow @jyothsnamaternity / @dr_jyothsna_rayal ↗
+                          <a href="https://www.instagram.com/jyothsnamaternity/" target="_blank" rel="noopener noreferrer" style={{ color: '#E4405F', fontWeight: 700, textDecoration: 'none' }}>
+                            Follow @jyothsnamaternity ↗
                           </a>
                         </div>
                       </div>
@@ -2308,7 +2189,6 @@ export default function App() {
                             <option value="Pregnancy Checkup">Pregnancy Checkup</option>
                             <option value="OBG Consultation">OBG Consultation</option>
                             <option value="Infertility Counselling">Infertility Counselling</option>
-                            <option value="Ultrasound Scan">Ultrasound Scan</option>
                             <option value="General Checkup">General Checkup</option>
                           </select>
                         </div>
@@ -2399,7 +2279,7 @@ export default function App() {
                 <a href="tel:+916303674536" className="cta-button-pink" style={{ fontSize: '0.8rem', padding: '8px 16px' }}>
                   📞 Call Helpline
                 </a>
-                <a href="http://instagram.com/jyothsnamaternity/" target="_blank" rel="noopener noreferrer" className="cta-button-white" style={{ background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', border: 'none', padding: '8px 16px', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '6px', textDecoration: 'none', fontWeight: 700 }}>
+                <a href="https://www.instagram.com/jyothsnamaternity/" target="_blank" rel="noopener noreferrer" className="cta-button-white" style={{ background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', border: 'none', padding: '8px 16px', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '6px', textDecoration: 'none', fontWeight: 700 }}>
                   <InstagramIcon style={{ width: '16px', height: '16px' }} /> Instagram ↗
                 </a>
               </div>
@@ -2456,7 +2336,6 @@ export default function App() {
                     <option value="Pregnancy Checkup">Pregnancy Checkup</option>
                     <option value="OBG Consultation">OBG Consultation</option>
                     <option value="Infertility Workup">Infertility Workup</option>
-                    <option value="4D Ultrasound Scan">4D Ultrasound Scan</option>
                     <option value="General Checkup">General Checkup</option>
                   </select>
                 </div>
