@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Award, ShieldAlert, HeartHandshake, Activity, HeartPulse, Beaker, Pill, BedDouble, 
   MapPin, Phone, CheckCircle2,
-  Menu, X, Clock, Sparkles, User, Play, Star
+  Menu, X, Clock, Sparkles, User, Play, Star, Video
 } from 'lucide-react';
 
 // Local User-Provided Clinical Media Assets
@@ -20,6 +20,7 @@ import imgCtg from './assets/images/Facilities/CTG.jpeg';
 import videoEcg from './assets/images/Facilities/ECG.mp4';
 import imgLab from './assets/images/Facilities/lab.jpeg';
 import imgPharmacy from './assets/images/Facilities/PHARMACY (2).jpeg';
+import imgUltrasound from './assets/images/Facilities/ultra sound scanning.jpeg';
 
 // User-Provided Carousel Images (Latest Updated Banners)
 import imgC1 from './assets/carousel/c1.png';
@@ -321,6 +322,24 @@ export default function App() {
   };
 
   const facilityDataMap = {
+    ultrasound: {
+      title: "Ultrasound / Scanning",
+      subtitle: "Advanced 4D HD Fetal Imaging & Diagnostic Scans",
+      badge: "4D HD Ultrasound",
+      image: imgUltrasound,
+      icon: <Activity style={{ width: '28px', height: '28px' }} />,
+      desc: "In-house advanced 4D HD Ultrasound equipment for pregnancy viability, anomaly scans, and Doppler tracking.",
+      features: [
+        "1st Trimester NT Screening & Viability Scans",
+        "4D Fetal Anomaly & Growth Scans",
+        "Uterine & Placental Color Doppler",
+        "Egg Growth Follicular Tracking for Fertility"
+      ],
+      statNum: "4D HD",
+      statLbl: "In-House Ultrasound Imaging",
+      gradient: "linear-gradient(135deg, #880E4F 0%, #C2185B 100%)",
+      graphicIcon: <Activity style={{ width: '110px', height: '110px', opacity: 0.15, position: 'absolute', right: '20px', bottom: '20px', color: '#ffffff' }} />
+    },
     monitoring: {
       title: "ECG & CTG",
       subtitle: "Continuous baby heartbeat & contraction monitoring",
@@ -341,7 +360,7 @@ export default function App() {
       graphicIcon: <Activity style={{ width: '110px', height: '110px', opacity: 0.15, position: 'absolute', right: '20px', bottom: '20px', color: '#ffffff' }} />
     },
     ot: {
-      title: "Operation Theatre",
+      title: "Advanced Operation Theatre",
       subtitle: "100% Sterile cleanroom for C-sections & surgeries",
       badge: "Modular OT",
       image: imgSurgery,
@@ -359,7 +378,7 @@ export default function App() {
       graphicIcon: <HeartPulse style={{ width: '110px', height: '110px', opacity: 0.15, position: 'absolute', right: '20px', bottom: '20px', color: '#ffffff' }} />
     },
     lab: {
-      title: "Labs",
+      title: "Laboratory Services",
       subtitle: "In-house blood testing & emergency lab reports",
       badge: "24/7 Pathology Lab",
       image: imgLab,
@@ -377,7 +396,7 @@ export default function App() {
       graphicIcon: <Beaker style={{ width: '110px', height: '110px', opacity: 0.15, position: 'absolute', right: '20px', bottom: '20px', color: '#ffffff' }} />
     },
     pharmacy: {
-      title: "Pharmacy",
+      title: "Pharmacy Services",
       subtitle: "24/7 Genuine pregnancy medicines & mother care",
       badge: "On-Site Pharmacy",
       image: imgPharmacy,
@@ -393,6 +412,24 @@ export default function App() {
       statLbl: "On-Site Pharmacy Stocking",
       gradient: "linear-gradient(135deg, #AD1457 0%, #D81B60 100%)",
       graphicIcon: <Pill style={{ width: '110px', height: '110px', opacity: 0.15, position: 'absolute', right: '20px', bottom: '20px', color: '#ffffff' }} />
+    },
+    emergency247: {
+      title: "24/7 Hospital Services",
+      subtitle: "Round-the-Clock Emergency Casualty, Labor & Admission Care",
+      badge: "24/7 Emergency Care",
+      image: imgHighRisk,
+      icon: <Clock style={{ width: '28px', height: '28px' }} />,
+      desc: "Round-the-clock emergency casualty, labor suite readiness, and duty doctor support for maternal emergencies.",
+      features: [
+        "24/7 Emergency Casualty & Duty Doctor On Call",
+        "24/7 Labor Suite & Normal/C-Section Backup",
+        "24/7 In-House Pharmacy & Pathology Testing",
+        "Emergency Nurse Call Systems & Patient Care"
+      ],
+      statNum: "24/7",
+      statLbl: "Emergency Hospital Care",
+      gradient: "linear-gradient(135deg, #880E4F 0%, #AD1457 100%)",
+      graphicIcon: <Clock style={{ width: '110px', height: '110px', opacity: 0.15, position: 'absolute', right: '20px', bottom: '20px', color: '#ffffff' }} />
     },
     suites: {
       title: "Private Recovery Suites",
@@ -566,7 +603,7 @@ export default function App() {
       id: 'cesarean-operations',
       category: 'obg',
       badge: 'Surgical Delivery',
-      title: 'Cesarean Operations',
+      title: 'Caesarean Section (C-Section)',
       image: imgSurgery,
       desc: 'Planned and emergency C-section deliveries in a sterile modular surgical theatre.',
       points: [
@@ -598,7 +635,7 @@ export default function App() {
       id: 'menstrual-disorders',
       category: 'gynaec',
       badge: 'Women Health',
-      title: 'Menstrual Disorders',
+      title: 'Treatment for Menstrual Disorders',
       image: imgMenstrual,
       desc: 'Evaluation and personalized care for period irregularities, pain, and heavy bleeding.',
       points: [
@@ -614,7 +651,7 @@ export default function App() {
       id: 'uterine-fibroids',
       category: 'gynaec',
       badge: 'Gynaec Surgery',
-      title: 'Uterine Fibroids',
+      title: 'Treatment for Uterine Fibroids',
       image: imgFibroids,
       desc: 'Medical management and laparoscopic surgical removal of uterine fibroids.',
       points: [
@@ -627,36 +664,36 @@ export default function App() {
       icon: <Award style={{ width: '80px', height: '80px', opacity: 0.18, position: 'absolute', right: '15px', bottom: '10px', color: '#ffffff' }} />
     },
     {
-      id: 'pcod',
+      id: 'pcod-thyroid',
       category: 'gynaec',
       badge: 'Hormonal Balance',
-      title: 'PCOD (Polycystic Ovarian Disease)',
+      title: 'Treatment for PCOD & Thyroid Problems',
       image: imgPcod,
-      desc: 'Medical management, ovulation restoration, and lifestyle guidance for PCOD/PCOS.',
+      desc: 'Medical management, ovulation restoration, and thyroid hormone balancing for PCOD/PCOS.',
       points: [
         "Hormone Testing & Metabolic Profiling",
+        "Thyroid Screening & Dosage Titration",
         "Ovulation Restoration Treatment",
-        "Weight & Diet Counseling",
-        "Period Regularity & Skin Care Guidance"
+        "Period Regularity & Lifestyle Counseling"
       ],
       bgGradient: 'linear-gradient(135deg, #D81B60 0%, #C2185B 100%)',
       icon: <Activity style={{ width: '80px', height: '80px', opacity: 0.18, position: 'absolute', right: '15px', bottom: '10px', color: '#ffffff' }} />
     },
     {
-      id: 'thyroid',
-      category: 'obg',
-      badge: 'Thyroid Care',
-      title: 'Thyroid Management',
+      id: 'e-consultation',
+      category: 'telehealth',
+      badge: 'Online & Remote Care',
+      title: 'E-Consultation',
       image: imgThyroid,
-      desc: 'Blood screening and dosage adjustments for Hypo and Hyperthyroidism during pregnancy.',
+      desc: 'Connect with Dr. Jyothsna Rayal remotely via Video or Phone Call for expert medical guidance.',
       points: [
-        "Thyroid Screening During Pregnancy",
-        "Hypo & Hyperthyroidism Dosage Titration",
-        "Mother & Baby Metabolic Protection",
-        "Routine Hormone Level Tracking"
+        "Online Video & Phone Doctor Consultations",
+        "Prescription & Ultrasound Report Reviews",
+        "First & Second Medical Opinions",
+        "Direct WhatsApp & Tele-health Support"
       ],
       bgGradient: 'linear-gradient(135deg, #AD1457 0%, #880E4F 100%)',
-      icon: <Clock style={{ width: '80px', height: '80px', opacity: 0.18, position: 'absolute', right: '15px', bottom: '10px', color: '#ffffff' }} />
+      icon: <Video style={{ width: '80px', height: '80px', opacity: 0.18, position: 'absolute', right: '15px', bottom: '10px', color: '#ffffff' }} />
     },
     {
       id: 're-canalisation',
@@ -2186,10 +2223,20 @@ export default function App() {
                         <div className="form-group">
                           <label className="form-label">Consultation Reason</label>
                           <select name="form-reason" className="form-select" required>
-                            <option value="Pregnancy Checkup">Pregnancy Checkup</option>
-                            <option value="OBG Consultation">OBG Consultation</option>
-                            <option value="Infertility Counselling">Infertility Counselling</option>
-                            <option value="General Checkup">General Checkup</option>
+                            <option value="Normal Deliveries">Normal Deliveries</option>
+                            <option value="High-Risk Deliveries">High-Risk Deliveries</option>
+                            <option value="Caesarean Section (C-Section)">Caesarean Section (C-Section)</option>
+                            <option value="Infertility Treatment">Infertility Treatment</option>
+                            <option value="Treatment for Menstrual Disorders">Treatment for Menstrual Disorders</option>
+                            <option value="Treatment for Uterine Fibroids">Treatment for Uterine Fibroids</option>
+                            <option value="Treatment for PCOD & Thyroid Problems">Treatment for PCOD & Thyroid Problems</option>
+                            <option value="E-Consultation">E-Consultation</option>
+                            <option value="Ultrasound / Scanning">Ultrasound / Scanning</option>
+                            <option value="ECG & CTG">ECG & CTG</option>
+                            <option value="Laboratory Services">Laboratory Services</option>
+                            <option value="Pharmacy Services">Pharmacy Services</option>
+                            <option value="Advanced Operation Theatre">Advanced Operation Theatre</option>
+                            <option value="24/7 Hospital Services">24/7 Hospital Services</option>
                           </select>
                         </div>
                       </div>
@@ -2264,10 +2311,12 @@ export default function App() {
               <ul className="footer-links">
                 <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Normal Deliveries</button></li>
                 <li><button onClick={() => navigateTo('services')} className="footer-link-btn">High-Risk Deliveries</button></li>
-                <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Cesarean Operations</button></li>
+                <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Caesarean Section (C-Section)</button></li>
                 <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Infertility Treatment</button></li>
-                <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Menstrual Disorders & Fibroids</button></li>
-                <li><button onClick={() => navigateTo('services')} className="footer-link-btn">PCOD, Thyroid & Re-Canalisation</button></li>
+                <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Treatment for Menstrual Disorders</button></li>
+                <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Treatment for Uterine Fibroids</button></li>
+                <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Treatment for PCOD & Thyroid</button></li>
+                <li><button onClick={() => navigateTo('services')} className="footer-link-btn">E-Consultation</button></li>
               </ul>
             </div>
 
@@ -2333,10 +2382,20 @@ export default function App() {
                 <div className="form-group">
                   <label className="form-label">Reason for Visit</label>
                   <select name="modal-reason" className="form-select" required>
-                    <option value="Pregnancy Checkup">Pregnancy Checkup</option>
-                    <option value="OBG Consultation">OBG Consultation</option>
-                    <option value="Infertility Workup">Infertility Workup</option>
-                    <option value="General Checkup">General Checkup</option>
+                    <option value="Normal Deliveries">Normal Deliveries</option>
+                    <option value="High-Risk Deliveries">High-Risk Deliveries</option>
+                    <option value="Caesarean Section (C-Section)">Caesarean Section (C-Section)</option>
+                    <option value="Infertility Treatment">Infertility Treatment</option>
+                    <option value="Treatment for Menstrual Disorders">Treatment for Menstrual Disorders</option>
+                    <option value="Treatment for Uterine Fibroids">Treatment for Uterine Fibroids</option>
+                    <option value="Treatment for PCOD & Thyroid Problems">Treatment for PCOD & Thyroid Problems</option>
+                    <option value="E-Consultation">E-Consultation</option>
+                    <option value="Ultrasound / Scanning">Ultrasound / Scanning</option>
+                    <option value="ECG & CTG">ECG & CTG</option>
+                    <option value="Laboratory Services">Laboratory Services</option>
+                    <option value="Pharmacy Services">Pharmacy Services</option>
+                    <option value="Advanced Operation Theatre">Advanced Operation Theatre</option>
+                    <option value="24/7 Hospital Services">24/7 Hospital Services</option>
                   </select>
                 </div>
               </div>
