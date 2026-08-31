@@ -2182,7 +2182,15 @@ export default function App() {
                         </div>
                         <div>
                           <h4 className="contact-item-title">Hospital Address</h4>
-                          <p className="contact-item-text">Door Number 2-253-D_5-1 (Op Building), Opp Line to Touch Ice Cream Parlour, Society Colony, Madanapalle-517325, Andhra Pradesh</p>
+                          <p className="contact-item-text" style={{ marginBottom: '6px' }}>Door Number 2-253-D_5-1 (Op Building), Opp Line to Touch Ice Cream Parlour, Society Colony, Madanapalle-517325, Andhra Pradesh</p>
+                          <a 
+                            href="https://www.google.com/maps/place/Jyoshna+maternity+hospital/@13.560765,78.495152,17z/data=!3m1!4b1!4m6!3m5!1s0x3bb2670c9850a2a1:0xf8868b1803db518a!8m2!3d13.5607598!4d78.4977269!16s%2Fg%2F11hzwfdfh1" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            style={{ color: 'var(--primary-pink)', fontWeight: 700, fontSize: '0.86rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                          >
+                            📍 Open Location in Google Maps ↗
+                          </a>
                         </div>
                       </div>
 
@@ -2223,14 +2231,25 @@ export default function App() {
 
                     <div className="contact-map-holder">
                       <iframe 
-                        title="Jyothsna Hospital Map Location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.81523456789!2d78.5012345!3d13.5512345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDMzJzA0LjQiTiA3OMKwMzAnMDQuNCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" 
+                        title="Jyothsna Maternity Hospital Google Map Location"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.512345!2d78.4977269!3d13.5607598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2670c9850a2a1%3A0xf8868b1803db518a!2sJyoshna%20maternity%20hospital!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                         width="100%" 
-                        height="180" 
-                        style={{ border: 0, borderRadius: '12px' }} 
+                        height="190" 
+                        style={{ border: 0, borderRadius: '14px' }} 
                         allowFullScreen="" 
                         loading="lazy">
                       </iframe>
+                      <div style={{ marginTop: '8px', textAlign: 'right' }}>
+                        <a 
+                          href="https://www.google.com/maps/place/Jyoshna+maternity+hospital/@13.560765,78.495152,17z/data=!3m1!4b1!4m6!3m5!1s0x3bb2670c9850a2a1:0xf8868b1803db518a!8m2!3d13.5607598!4d78.4977269!16s%2Fg%2F11hzwfdfh1" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="cta-button-pink"
+                          style={{ fontSize: '0.78rem', padding: '6px 14px', textDecoration: 'none', display: 'inline-block' }}
+                        >
+                          🗺️ Get Driving Directions ↗
+                        </a>
+                      </div>
                     </div>
                   </div>
 
