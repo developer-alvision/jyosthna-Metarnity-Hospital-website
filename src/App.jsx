@@ -931,42 +931,111 @@ export default function App() {
               </div>
             </section>
 
-            {/* SECTION 2: LANDING PAGE PREGNANCY DUE DATE CALCULATOR */}
+            {/* SECTION 2: LANDING PAGE OVULATION & FERTILITY CALCULATOR */}
             <section className="section section-pink" id="calculator-landing-section" style={{ padding: '3.5rem 0 4rem', background: 'linear-gradient(135deg, #FFF0F5 0%, #FCE4EC 100%)' }}>
               <div className="container">
-                <span className="sec-tag" style={{ textAlign: 'center', marginBottom: '6px' }}>Estimate Your Delivery Window</span>
-                <h2 className="sec-title" style={{ textAlign: 'center', marginBottom: '1.8rem' }}>
-                  Pregnancy Due Date <span>(EDD) Calculator</span>
+                <span className="sec-tag" style={{ textAlign: 'center', marginBottom: '6px' }}>Track Your Fertile Window</span>
+                <h2 className="sec-title" style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+                  Ovulation & Fertility <span>Calculator</span>
                 </h2>
+                <p style={{ textAlign: 'center', fontSize: '0.96rem', color: 'var(--text-dark)', maxWidth: '650px', margin: '0 auto 1.8rem', lineHeight: 1.6 }}>
+                  Know your most fertile days each cycle. Enter your last period date and average cycle length to estimate your ovulation date and fertile window.
+                </p>
                 <div className="glass-panel" style={{ padding: '2.5rem 2.8rem', borderRadius: '24px', maxWidth: '750px', margin: '0 auto', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.1)', border: '2px solid rgba(216, 27, 96, 0.2)', background: '#ffffff' }}>
-                  <form onSubmit={handleEddCalculate}>
-                    <div className="form-group" style={{ marginBottom: '1.8rem' }}>
-                      <label className="form-label" style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--deep-rose)', display: 'block', marginBottom: '10px' }}>
-                        Select First Day of Last Menstrual Period (LMP)
+                  <form onSubmit={handleOvulationCalculate}>
+                    <div className="form-group" style={{ marginBottom: '1.5rem' }}>
+                      <label className="form-label" style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--deep-rose)', display: 'block', marginBottom: '8px' }}>
+                        First Day of Last Menstrual Period (LMP)
                       </label>
                       <input 
                         type="date" 
                         className="form-input" 
-                        value={lmpDate} 
-                        onChange={(e) => setLmpDate(e.target.value)} 
+                        value={ovulationLmpDate} 
+                        onChange={(e) => setOvulationLmpDate(e.target.value)} 
                         required 
                         style={{ width: '100%', padding: '14px 20px', borderRadius: '14px', border: '1.5px solid var(--primary-pink)', fontSize: '1rem', background: '#ffffff' }}
                       />
                     </div>
+                    <div className="form-group" style={{ marginBottom: '1.8rem' }}>
+                      <label className="form-label" style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--deep-rose)', display: 'block', marginBottom: '8px' }}>
+                        Average Menstrual Cycle Length (days)
+                      </label>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                        <input 
+                          type="range" 
+                          min="21" max="40" 
+                          value={ovulationCycleLength} 
+                          onChange={(e) => setOvulationCycleLength(e.target.value)} 
+                          style={{ flex: 1, accentColor: 'var(--primary-pink)' }} 
+                        />
+                        <span style={{ 
+                          background: 'var(--primary-pink)', 
+                          color: '#ffffff', 
+                          padding: '8px 18px', 
+                          borderRadius: '20px', 
+                          fontWeight: 800, 
+                          fontSize: '1rem', 
+                          minWidth: '70px', 
+                          textAlign: 'center' 
+                        }}>
+                          {ovulationCycleLength} days
+                        </span>
+                      </div>
+                      <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '6px' }}>Normal range: 21–40 days. Average cycle length is 28 days.</p>
+                    </div>
                     <button type="submit" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', padding: '14px 20px', fontSize: '1.05rem', fontWeight: 700 }}>
-                      Calculate Estimated Due Date 📅
+                      Calculate Ovulation & Fertile Days 🌸
                     </button>
                   </form>
 
-                  {eddResult && (
-                    <div style={{ marginTop: '2rem', background: 'var(--light-pink)', padding: '1.8rem', borderRadius: '20px', border: '2px solid var(--primary-pink)', textAlign: 'center', boxShadow: '0 8px 25px rgba(216, 27, 96, 0.15)' }}>
-                      <span style={{ fontSize: '0.85rem', textTransform: 'uppercase', color: 'var(--primary-pink)', fontWeight: 800, letterSpacing: '1px' }}>Estimated Delivery Date (EDD)</span>
-                      <div style={{ fontSize: '2.2rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', fontWeight: 800, margin: '8px 0' }}>
-                        {eddResult.dateStr}
+                  {ovulationResult && (
+                    <div style={{ marginTop: '2rem' }}>
+                      <div style={{ background: 'linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%)', padding: '1.2rem 1.5rem', borderRadius: '16px', marginBottom: '1rem', textAlign: 'center' }}>
+                        <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', color: 'var(--primary-pink)', fontWeight: 800, letterSpacing: '1px' }}>Your Cycle Insight</span>
+                        <p style={{ fontSize: '0.95rem', color: 'var(--text-dark)', margin: '6px 0 0', lineHeight: 1.5 }}>
+                          With a <strong>{ovulationResult.cycleLength}-day cycle</strong>, ovulation typically occurs around <strong>Day {ovulationResult.ovulationDay}</strong> of your cycle.
+                        </p>
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '12px', fontSize: '1rem', color: 'var(--text-dark)', flexWrap: 'wrap' }}>
-                        <span>Current Stage: <strong>{eddResult.weeks} Weeks Pregnant</strong></span>
-                        <span>Days Remaining: <strong>{eddResult.daysLeft} Days</strong></span>
+
+                      {ovulationResult.cycles.map((cycle) => {
+                        const opts = { year: 'numeric', month: 'short', day: 'numeric' };
+                        return (
+                          <div key={cycle.cycleNum} style={{ 
+                            background: '#ffffff', 
+                            border: '1.5px solid rgba(216, 27, 96, 0.15)', 
+                            borderRadius: '18px', 
+                            padding: '1.5rem', 
+                            marginBottom: '1rem',
+                            boxShadow: '0 4px 15px rgba(0,0,0,0.04)'
+                          }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                              <span style={{ background: 'var(--primary-pink)', color: '#fff', width: '28px', height: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.85rem' }}>
+                                {cycle.cycleNum}
+                              </span>
+                              <h4 style={{ margin: 0, fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: 'var(--deep-rose)' }}>Cycle {cycle.cycleNum}</h4>
+                            </div>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
+                              <div style={{ background: 'var(--light-pink)', padding: '10px 14px', borderRadius: '12px', textAlign: 'center' }}>
+                                <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: 'var(--primary-pink)', fontWeight: 800, display: 'block', marginBottom: '4px' }}>Ovulation Date</span>
+                                <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--deep-rose)' }}>{cycle.ovulationDate.toLocaleDateString('en-US', opts)}</span>
+                              </div>
+                              <div style={{ background: '#E8F5E9', padding: '10px 14px', borderRadius: '12px', textAlign: 'center' }}>
+                                <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: '#2E7D32', fontWeight: 800, display: 'block', marginBottom: '4px' }}>Fertile Window</span>
+                                <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#1B5E20' }}>{cycle.fertileStart.toLocaleDateString('en-US', opts)} – {cycle.fertileEnd.toLocaleDateString('en-US', opts)}</span>
+                              </div>
+                              <div style={{ background: '#FFF3E0', padding: '10px 14px', borderRadius: '12px', textAlign: 'center' }}>
+                                <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: '#E65100', fontWeight: 800, display: 'block', marginBottom: '4px' }}>Next Period</span>
+                                <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#BF360C' }}>{cycle.nextPeriod.toLocaleDateString('en-US', opts)}</span>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+
+                      <div style={{ background: '#FFF8E1', border: '1px solid #FFE082', borderRadius: '14px', padding: '1rem 1.2rem', marginTop: '0.5rem' }}>
+                        <p style={{ fontSize: '0.82rem', color: '#5D4037', margin: 0, lineHeight: 1.5 }}>
+                          <strong>⚠️ Disclaimer:</strong> This calculator provides estimates based on average cycle patterns. Individual ovulation timing may vary. For accurate fertility assessment, consult Dr. Jyothsna Rayal at Jyothsna Maternity Hospital.
+                        </p>
                       </div>
                     </div>
                   )}
@@ -1888,13 +1957,6 @@ export default function App() {
                     🌸 Ovulation & Fertility Tracker
                   </button>
                   <button 
-                    onClick={() => document.getElementById('calculator-section')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="cta-button-white"
-                    style={{ fontSize: '0.85rem', padding: '8px 18px', borderRadius: '20px', border: '1.5px solid var(--primary-pink)', color: 'var(--primary-pink)' }}
-                  >
-                    📅 Due Date (EDD) Calculator
-                  </button>
-                  <button 
                     onClick={() => document.getElementById('trimester-guide-section')?.scrollIntoView({ behavior: 'smooth' })}
                     className="cta-button-white"
                     style={{ fontSize: '0.85rem', padding: '8px 18px', borderRadius: '20px' }}
@@ -2214,37 +2276,6 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* SECTION 4: Due Date Calculator */}
-                  <div id="calculator-section" style={{ borderTop: '2px dashed rgba(216, 27, 96, 0.15)', paddingTop: '3rem' }}>
-                    <span className="sec-tag" style={{ textAlign: 'center', marginBottom: '4px' }}>Estimate Your Delivery Window</span>
-                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: 'var(--deep-rose)', textAlign: 'center', marginBottom: '1.5rem' }}>
-                      Pregnancy Due Date (EDD) Calculator
-                    </h3>
-                    <div className="glass-panel" style={{ padding: '2.5rem', borderRadius: '24px', maxWidth: '700px', margin: '0 auto' }}>
-                      <form onSubmit={handleEddCalculate}>
-                        <div className="form-group" style={{ marginBottom: '1.5rem' }}>
-                          <label className="form-label">Select First Day of Last Menstrual Period (LMP)</label>
-                          <input type="date" className="form-input" value={lmpDate} onChange={(e) => setLmpDate(e.target.value)} required />
-                        </div>
-                        <button type="submit" className="cta-button-pink" style={{ width: '100%', textAlign: 'center' }}>
-                          Calculate Estimated Due Date
-                        </button>
-                      </form>
-
-                      {eddResult && (
-                        <div style={{ marginTop: '2rem', background: 'var(--light-pink)', padding: '1.5rem', borderRadius: '18px', border: '1.5px solid var(--primary-pink)', textAlign: 'center' }}>
-                          <span style={{ fontSize: '0.82rem', textTransform: 'uppercase', color: 'var(--primary-pink)', fontWeight: 800 }}>Estimated Delivery Date</span>
-                          <div style={{ fontSize: '2rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', fontWeight: 700, margin: '6px 0' }}>
-                            {eddResult.dateStr}
-                          </div>
-                          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '10px', fontSize: '0.9rem', color: 'var(--text-dark)' }}>
-                            <span>Current: <strong>{eddResult.weeks} Weeks</strong></span>
-                            <span>Days Remaining: <strong>{eddResult.daysLeft} Days</strong></span>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
 
                   {/* SECTION 5: Ovulation Calculator */}
                   <div id="ovulation-calculator-section" style={{ borderTop: '2px dashed rgba(216, 27, 96, 0.15)', paddingTop: '3rem' }}>
