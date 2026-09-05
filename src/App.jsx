@@ -1920,23 +1920,11 @@ export default function App() {
                     </div>
 
                     {/* Instagram Reels Gallery */}
-                    <div className="ig-reels-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+                    <div className="ig-reels-grid">
                       {instagramReels.slice(0, visibleReels).map((shortcode, idx) => (
-                        <div key={shortcode} style={{
-                          borderRadius: '20px',
-                          overflow: 'hidden',
-                          border: '1.5px solid rgba(216, 27, 96, 0.12)',
-                          background: '#ffffff',
-                          boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-                          transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                          display: 'flex',
-                          flexDirection: 'column'
-                        }}
-                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 35px rgba(136, 14, 79, 0.15)'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)'; }}
-                        >
+                        <div key={shortcode} className="ig-reel-card">
                           {/* Reel number badge */}
-                          <div style={{ padding: '10px 16px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <div style={{ padding: '12px 16px 6px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                             <span style={{
                               display: 'inline-flex', alignItems: 'center', gap: '6px',
                               background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
@@ -1948,32 +1936,17 @@ export default function App() {
                           </div>
 
                           {/* Instagram Embed iframe */}
-                          <div style={{ 
-                            height: '430px', 
-                            overflow: 'hidden', 
-                            position: 'relative',
-                            margin: '8px 0 0',
-                            background: '#ffffff'
-                          }}>
+                          <div className="ig-reel-iframe-wrapper">
                             <iframe
                               src={`https://www.instagram.com/reel/${shortcode}/embed/`}
                               width="100%"
-                              height="600"
+                              height="480"
                               frameBorder="0"
                               scrolling="no"
                               loading="lazy"
                               allowTransparency="true"
                               allow="encrypted-media"
                               title={`Instagram Reel ${idx + 1}`}
-                              style={{ 
-                                border: 'none', 
-                                borderRadius: '0',
-                                width: '124%',
-                                height: '600px',
-                                position: 'absolute',
-                                left: '-12%',
-                                top: '0'
-                              }}
                             />
                           </div>
 
@@ -1992,7 +1965,7 @@ export default function App() {
                                 textDecoration: 'none', borderRadius: '14px'
                               }}
                             >
-                              <Play style={{ width: '16px', height: '16px', fill: 'currentColor' }} /> Watch Full Video ↗
+                              <InstagramIcon style={{ width: '16px', height: '16px' }} /> Watch Full Video ↗
                             </a>
                           </div>
                         </div>
