@@ -1874,8 +1874,41 @@ export default function App() {
 
             <section className="section section-white" id="knowledge-hub">
               <div className="container">
-                <span className="sec-tag">Empowering Parents</span>
-                <h2 className="sec-title">Pregnancy Knowledge <span>Hub</span></h2>
+                {/* Quick Interactive Tools Bar */}
+                <div style={{
+                  display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center',
+                  marginBottom: '2.5rem', background: 'var(--light-pink)', padding: '12px 20px',
+                  borderRadius: '30px', border: '1px solid rgba(216, 27, 96, 0.15)'
+                }}>
+                  <button 
+                    onClick={() => document.getElementById('ovulation-calculator-section')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="cta-button-pink"
+                    style={{ fontSize: '0.85rem', padding: '8px 18px', borderRadius: '20px' }}
+                  >
+                    🌸 Ovulation & Fertility Tracker
+                  </button>
+                  <button 
+                    onClick={() => document.getElementById('calculator-section')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="cta-button-white"
+                    style={{ fontSize: '0.85rem', padding: '8px 18px', borderRadius: '20px', border: '1.5px solid var(--primary-pink)', color: 'var(--primary-pink)' }}
+                  >
+                    📅 Due Date (EDD) Calculator
+                  </button>
+                  <button 
+                    onClick={() => document.getElementById('trimester-guide-section')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="cta-button-white"
+                    style={{ fontSize: '0.85rem', padding: '8px 18px', borderRadius: '20px' }}
+                  >
+                    👶 Trimester Roadmap
+                  </button>
+                  <button 
+                    onClick={() => document.getElementById('faqs-section')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="cta-button-white"
+                    style={{ fontSize: '0.85rem', padding: '8px 18px', borderRadius: '20px' }}
+                  >
+                    ❓ FAQs
+                  </button>
+                </div>
 
                 <div className="hub-container" style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
                   
@@ -2524,6 +2557,7 @@ export default function App() {
                 <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Specialized Services</button></li>
                 <li><button onClick={() => navigateTo('facilities')} className="footer-link-btn">Hospital Facilities</button></li>
                 <li><button onClick={() => navigateTo('pregnancy-guide')} className="footer-link-btn">Pregnancy Guide</button></li>
+                <li><button onClick={() => { navigateTo('pregnancy-guide'); setTimeout(() => document.getElementById('ovulation-calculator-section')?.scrollIntoView({ behavior: 'smooth' }), 250); }} className="footer-link-btn" style={{ color: 'var(--primary-pink)', fontWeight: 700 }}>Ovulation Tracker 🌸</button></li>
                 <li><button onClick={() => navigateTo('contact')} className="footer-link-btn">Contact Us</button></li>
               </ul>
             </div>
