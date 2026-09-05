@@ -1937,7 +1937,7 @@ export default function App() {
           <div className="page-view guide-page-view">
             {renderPageHeader(
               "Pregnancy Guide & Knowledge Hub",
-              "Empowering Parents with Clinical Advice, Video Reels, FAQs & Due Date Calculator",
+              "Empowering Parents with Clinical Advice, Video Reels, FAQs & Ovulation & Fertility Calculator",
               "Pregnancy Hub"
             )}
 
