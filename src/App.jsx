@@ -998,7 +998,7 @@ export default function App() {
                       Empowering Every Mother Through a <span>Safe & Joyful Journey</span>
                     </h2>
                     <p style={{ fontSize: '1.02rem', color: 'var(--text-dark)', lineHeight: '1.7', marginBottom: '1.8rem' }}>
-                      At <strong>Jyothsna Maternity Hospital</strong>, we celebrate motherhood as a sacred life experience. Led by chief consultant <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong>, our expert medical team provides comprehensive trimester tracking, specialized high-risk pregnancy care, painless labor support, and 24/7 emergency response.
+                      At <strong>Jyothsna Maternity Hospital</strong>, we celebrate motherhood as a sacred life experience. Led by chief consultant <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and Senior Anaesthesia Specialist <strong>Dr. Jaswanth Rayal, MBBS, DA</strong>, our expert medical team provides comprehensive trimester tracking, specialized high-risk pregnancy care, painless labor support, and 24/7 emergency response.
                     </p>
 
                     <div className="grid-2x2-balanced" style={{ marginBottom: '2rem' }}>
@@ -1564,7 +1564,7 @@ export default function App() {
                     Welcome to Jyothsna Maternity & General Hospital
                   </h3>
                   <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-dark)', marginBottom: '12px' }}>
-                    Founded in <strong>2018</strong> by <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong>, our hospital has proudly supported mothers and families with <strong>3000+ successful deliveries</strong> till date in Madanapalle.
+                    Founded in <strong>2018</strong> by <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and <strong>Dr. Jaswanth Rayal, MBBS, DA</strong>, our hospital has proudly supported mothers and families with <strong>3000+ successful deliveries</strong> till date in Madanapalle.
                   </p>
                   <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-dark)', marginBottom: '16px' }}>
                     From routine antenatal checkups to <strong>painless labor epidurals, high-risk obstetrics, and 24/7 emergency surgeries</strong>, our expert doctors provide seamless, compassionate care under one roof.
@@ -1575,10 +1575,10 @@ export default function App() {
                 </div>
 
                 <span className="sec-tag">Medical Leadership</span>
-                <h3 className="sec-title" style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>Chief <span>Consultant Doctor</span></h3>
+                <h3 className="sec-title" style={{ fontSize: '1.8rem', marginBottom: '2rem' }}>Our Senior <span>Consultant Doctors</span></h3>
 
-                {/* Doctor Card */}
-                <div style={{ maxWidth: '580px', margin: '0 auto' }}>
+                {/* 2-Column Grid for Both Doctors */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
                   
                   {/* Doctor 1: Dr. Jyothsna Rayal */}
                   <div style={{ background: '#ffffff', border: '2px solid rgba(216, 27, 96, 0.25)', borderRadius: '28px', padding: '2.2rem 2rem', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.12)', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
@@ -1616,6 +1616,42 @@ export default function App() {
 
                       <button onClick={() => setIsModalOpen(true)} className="cta-button-pink" style={{ width: '100%', fontSize: '0.92rem', padding: '11px 18px' }}>
                         Book Consultation with Dr. Jyothsna ↗
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Doctor 2: Dr. Jaswanth Rayal */}
+                  <div style={{ background: '#ffffff', border: '2px solid rgba(216, 27, 96, 0.25)', borderRadius: '28px', padding: '2.2rem 2rem', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.12)', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
+                    <div>
+                      <div style={{ width: '140px', height: '140px', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--primary-pink)', boxShadow: '0 8px 25px rgba(216, 27, 96, 0.3)', background: 'linear-gradient(135deg, #880E4F 0%, #D81B60 100%)', margin: '0 auto 1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff' }}>
+                        <User style={{ width: '75px', height: '75px', opacity: 0.95 }} />
+                      </div>
+
+                      <h3 style={{ fontSize: '1.75rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', margin: '0 0 4px', fontWeight: 700 }}>Dr. Jaswanth Rayal</h3>
+                      <p style={{ color: 'var(--primary-pink)', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '6px' }}>MBBS, DA (Anaesthesia Specialist)</p>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--text-dark)', lineHeight: 1.4, marginBottom: '1rem', fontWeight: 600 }}>Consultant Anaesthesiologist & Critical Care Specialist</p>
+
+                      <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '1.2rem', flexWrap: 'wrap' }}>
+                        <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>Anaesthesia Specialist</span>
+                        <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>Painless Labor Epidurals</span>
+                        <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>Surgical OT Safety</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div style={{ background: 'var(--light-pink)', border: '1px solid var(--soft-blush)', padding: '10px 14px', borderRadius: '16px', textAlign: 'left', marginBottom: '1rem', fontSize: '0.84rem', color: 'var(--deep-rose)' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+                          <span>🏥 Surgical OT Care:</span>
+                          <strong>24/7 OT & Surgery Backup</strong>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <span>💉 Painless Delivery Care:</span>
+                          <strong style={{ color: 'var(--primary-pink)' }}>On Demand 24/7</strong>
+                        </div>
+                      </div>
+
+                      <button onClick={() => setIsModalOpen(true)} className="cta-button-pink" style={{ width: '100%', fontSize: '0.92rem', padding: '11px 18px' }}>
+                        Book Consultation with Dr. Jaswanth ↗
                       </button>
                     </div>
                   </div>
@@ -2413,6 +2449,7 @@ export default function App() {
                         <label className="form-label">Select Doctor</label>
                         <select name="form-doctor" className="form-select">
                           <option value="Dr. Jyothsna Rayal MS (OBG)">Dr. Jyothsna Rayal MS (OBG) — Chief Obstetrician</option>
+                          <option value="Dr. Jaswanth Rayal MBBS, DA">Dr. Jaswanth Rayal MBBS, DA — Anaesthesia Specialist</option>
                           <option value="Any Available Specialist Doctor">Any Available Specialist Doctor</option>
                         </select>
                       </div>
@@ -2492,7 +2529,7 @@ export default function App() {
                   <span className="logo-subtitle" style={{ color: 'var(--soft-blush)' }}>Maternity Hospital</span>
                 </div>
               </a>
-              <p className="footer-desc">Founded in 2018 by Dr. Jyothsna Rayal MBBS, MS (OBG), supporting mothers with 3000+ safe deliveries in Madanapalle.</p>
+              <p className="footer-desc">Founded in 2018 by Dr. Jyothsna Rayal MBBS, MS (OBG) & Dr. Jaswanth Rayal MBBS, DA (Anaesthesia Specialist), supporting mothers with 3000+ safe deliveries in Madanapalle.</p>
               <span className="footer-tagline">“Because Every Mother Deserves Safe & Caring Hands”</span>
             </div>
 
@@ -2501,7 +2538,7 @@ export default function App() {
               <ul className="footer-links">
                 <li><button onClick={() => navigateTo('home')} className="footer-link-btn">Home</button></li>
                 <li><button onClick={() => navigateTo('care-journey')} className="footer-link-btn">Care Journey</button></li>
-                <li><button onClick={() => navigateTo('about')} className="footer-link-btn">About Dr. Jyothsna</button></li>
+                <li><button onClick={() => navigateTo('about')} className="footer-link-btn">About Our Doctors</button></li>
                 <li><button onClick={() => navigateTo('services')} className="footer-link-btn">Specialized Services</button></li>
                 <li><button onClick={() => navigateTo('facilities')} className="footer-link-btn">Hospital Facilities</button></li>
                 <li><button onClick={() => navigateTo('pregnancy-guide')} className="footer-link-btn">Pregnancy Guide</button></li>
@@ -2580,6 +2617,7 @@ export default function App() {
                 <label className="form-label">Select Doctor</label>
                 <select name="modal-doctor" className="form-select">
                   <option value="Dr. Jyothsna Rayal MS (OBG)">Dr. Jyothsna Rayal MS (OBG) — Chief Obstetrician</option>
+                  <option value="Dr. Jaswanth Rayal MBBS, DA">Dr. Jaswanth Rayal MBBS, DA — Anaesthesia Specialist</option>
                   <option value="Any Available Specialist Doctor">Any Available Specialist Doctor</option>
                 </select>
               </div>
