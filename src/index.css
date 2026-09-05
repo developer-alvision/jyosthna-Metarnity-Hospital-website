@@ -2087,6 +2087,9 @@ footer {
   .blogs-grid {
     grid-template-columns: 1fr !important;
   }
+  .ig-reels-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
   .form-row {
     grid-template-columns: 1fr !important;
   }
@@ -2107,6 +2110,14 @@ footer {
     object-fit: cover !important;
     object-position: center !important;
     background: #ffffff;
+  }
+
+  .ig-reels-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+  }
+  .ig-reels-grid iframe {
+    height: 480px !important;
   }
 
   .carousel-arrow-btn {

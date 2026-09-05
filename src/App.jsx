@@ -239,6 +239,22 @@ export default function App() {
   const [faqSearchQuery, setFaqSearchQuery] = useState('');
   const [faqCategoryFilter, setFaqCategoryFilter] = useState('all');
   const [openFaqIds, setOpenFaqIds] = useState([]);
+  const [visibleReels, setVisibleReels] = useState(9);
+
+  // All Instagram Reel shortcodes from @jyothsnamaternity
+  const instagramReels = [
+    'DXRdvdhCUuv', 'DcV58rvp0Qt', 'DZCxokIpm_q', 'DcQ0nIvJjMW', 'DYpDPdgpHn8',
+    'DcOVEsvplqV', 'Dc0zdTxpSC0', 'DcJDPbGTUM6', 'DcyQNt6pDT2', 'Dcvp8RppUVy',
+    'Dcn0xk5JGg7', 'DcivUs3piV8', 'DcgMW6jp-gS', 'DcGE3lopzYM', 'Db-zrUGJrpu',
+    'Db8IH9aJ7Bw', 'Db5o3VSJg8a', 'Db3BLTYiX2y', 'Dbst62XCcBR', 'DbqKz1TJD56',
+    'Dbk7fFjtWhQ', 'DbgDBEbJgf7', 'DbasV-xCWCO', 'DbYL7I9peRK', 'DbVkwb5J38Z',
+    'DbTBalTCSxc', 'DbN6N_qphkB', 'DbLPLTEsDmx', 'DbIgqFGCflp', 'DbGJf6xia5a',
+    'DbDjQ3spsCl', 'DbA-LsViSw2', 'Da73qxBpD4s', 'Da5WWh5J3k5', 'Da2ten0tjDF',
+    'DanfSOPPXIw', 'DakhwTRnS6h', 'DaiEbcjvU0W', 'DaVK4CjhNn9', 'DaSprpLsCJW',
+    'DaPV__6tIx-', 'DaLAVnqpd4b', 'DaDXWkwpAjv', 'DZ46vKUJaVU', 'DZ-CWN8p3OF',
+    'DZxL29Fp_Z6', 'DZujweCJMT9', 'DZr-92mNcFi', 'DZpc3cvpjao', 'DZm0zz5JX8U',
+    'DZjaUvKJWYb', 'DZfKn5Qpo9B', 'DZP0kpaJH63'
+  ];
 
   const toggleFaqId = (id) => {
     setOpenFaqIds(prev => 
@@ -455,6 +471,11 @@ export default function App() {
   const [lmpDate, setLmpDate] = useState('');
   const [eddResult, setEddResult] = useState(null);
 
+  // Ovulation Calculator State
+  const [ovulationLmpDate, setOvulationLmpDate] = useState('');
+  const [ovulationCycleLength, setOvulationCycleLength] = useState('28');
+  const [ovulationResult, setOvulationResult] = useState(null);
+
   // Appointment Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -527,6 +548,47 @@ export default function App() {
       dateStr: edd.toLocaleDateString('en-US', options),
       weeks: currentWeeks,
       daysLeft: daysLeft
+    });
+  };
+
+  // Ovulation Calculator Logic
+  const handleOvulationCalculate = (e) => {
+    e.preventDefault();
+    if (!ovulationLmpDate) {
+      alert('Please select your Last Menstrual Period date.');
+      return;
+    }
+
+    const lmp = new Date(ovulationLmpDate);
+    const today = new Date();
+    const cycleLen = parseInt(ovulationCycleLength) || 28;
+    
+    // Ovulation typically occurs 14 days before the next period
+    const lutealPhase = 14;
+    const ovulationDay = cycleLen - lutealPhase;
+    
+    // Calculate next 3 cycles of ovulation dates
+    const cycles = [];
+    for (let i = 0; i < 3; i++) {
+      const cycleStart = new Date(lmp.getTime() + (i * cycleLen * 24 * 60 * 60 * 1000));
+      const ovulationDate = new Date(cycleStart.getTime() + (ovulationDay * 24 * 60 * 60 * 1000));
+      const fertileStart = new Date(ovulationDate.getTime() - (5 * 24 * 60 * 60 * 1000));
+      const fertileEnd = new Date(ovulationDate.getTime() + (1 * 24 * 60 * 60 * 1000));
+      const nextPeriod = new Date(cycleStart.getTime() + (cycleLen * 24 * 60 * 60 * 1000));
+      
+      cycles.push({
+        cycleNum: i + 1,
+        ovulationDate,
+        fertileStart,
+        fertileEnd,
+        nextPeriod
+      });
+    }
+    
+    setOvulationResult({
+      cycles,
+      cycleLength: cycleLen,
+      ovulationDay
     });
   };
 
@@ -1187,7 +1249,7 @@ export default function App() {
                 <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                   {/* PERFECT BOLD DARK ROSE TEXT ON WHITE BUTTON FIX */}
                   <a href="tel:+916303674536" className="cta-button-white" style={{ fontSize: '1rem', padding: '14px 32px' }}>
-                    📞 Call 24/7 Helpline: 08571 222123
+                    📞 Call 24/7 Helpline: +91 63036 74536
                   </a>
                   <button onClick={() => navigateTo('contact')} className="cta-button-pink" style={{ fontSize: '1rem', padding: '14px 32px' }}>
                     Book Appointment Online ↗
@@ -1857,83 +1919,101 @@ export default function App() {
                       </a>
                     </div>
 
-                    <div className="blogs-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                      {/* Card 1 */}
-                      <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
-                        <a href="https://www.instagram.com/reel/DXRdvdhCUuv/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #AD1457 0%, #880E4F 100%)' }}>
-                          <img src={imgHighRisk} alt="9th Month Care Reel Thumbnail" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(136, 14, 79, 0.85) 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 3 }}>
-                            <ShieldAlert style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
-                            <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Entering 9th Month Precautions</h4>
+                    {/* Instagram Reels Gallery */}
+                    <div className="ig-reels-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+                      {instagramReels.slice(0, visibleReels).map((shortcode, idx) => (
+                        <div key={shortcode} style={{
+                          borderRadius: '20px',
+                          overflow: 'hidden',
+                          border: '1.5px solid rgba(216, 27, 96, 0.12)',
+                          background: '#ffffff',
+                          boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+                          transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                          display: 'flex',
+                          flexDirection: 'column'
+                        }}
+                        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 35px rgba(136, 14, 79, 0.15)'; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.06)'; }}
+                        >
+                          {/* Reel number badge */}
+                          <div style={{ padding: '10px 16px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <span style={{
+                              display: 'inline-flex', alignItems: 'center', gap: '6px',
+                              background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                              color: '#ffffff', padding: '4px 12px', borderRadius: '20px',
+                              fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px'
+                            }}>
+                              <InstagramIcon style={{ width: '12px', height: '12px' }} /> Reel #{idx + 1}
+                            </span>
                           </div>
-                          <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
-                          </span>
-                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.92)', color: 'var(--primary-pink)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, boxShadow: '0 8px 20px rgba(0,0,0,0.3)' }}>
-                            <Play style={{ width: '30px', height: '30px', fill: 'var(--primary-pink)', marginLeft: '4px' }} />
-                          </div>
-                        </a>
-                        <div className="blog-body" style={{ padding: '1.5rem' }}>
-                          <span className="blog-tag">9th Month Care • Precautions</span>
-                          <h4 className="blog-title" style={{ fontSize: '1.2rem', color: 'var(--deep-rose)', margin: '6px 0 8px' }}>Entering 9th Month: Essential Precautions</h4>
-                          <p className="blog-excerpt" style={{ fontSize: '0.88rem', color: 'var(--text-dark)', lineHeight: 1.5, marginBottom: '1.2rem' }}>Dr. Jyothsna explains critical signs to watch for when entering the 9th month of pregnancy.</p>
-                          <a href="https://www.instagram.com/reel/DXRdvdhCUuv/" target="_blank" rel="noopener noreferrer" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', fontSize: '0.82rem', padding: '10px 16px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none' }}>
-                            <InstagramIcon style={{ width: '16px', height: '16px' }} /> Watch Reel on Instagram ↗
-                          </a>
-                        </div>
-                      </div>
 
-                      {/* Card 2 */}
-                      <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
-                        <a href="https://www.instagram.com/reel/DcOVEsvplqV/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #880E4F 0%, #AD1457 100%)' }}>
-                          <img src={imgNormalDelivery} alt="Husband Role Reel Thumbnail" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(136, 14, 79, 0.85) 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 3 }}>
-                            <HeartHandshake style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
-                            <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Husband's Role During Pregnancy</h4>
+                          {/* Instagram Embed iframe */}
+                          <div style={{ 
+                            height: '420px', 
+                            overflow: 'hidden', 
+                            position: 'relative',
+                            margin: '8px 0 0'
+                          }}>
+                            <iframe
+                              src={`https://www.instagram.com/reel/${shortcode}/embed/`}
+                              width="100%"
+                              height="580"
+                              frameBorder="0"
+                              scrolling="no"
+                              loading="lazy"
+                              allowTransparency="true"
+                              allow="encrypted-media"
+                              title={`Instagram Reel ${idx + 1}`}
+                              style={{ border: 'none', borderRadius: '0' }}
+                            />
                           </div>
-                          <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
-                          </span>
-                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.92)', color: 'var(--primary-pink)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, boxShadow: '0 8px 20px rgba(0,0,0,0.3)' }}>
-                            <Play style={{ width: '30px', height: '30px', fill: 'var(--primary-pink)', marginLeft: '4px' }} />
-                          </div>
-                        </a>
-                        <div className="blog-body" style={{ padding: '1.5rem' }}>
-                          <span className="blog-tag">Family Care • Partner Guide</span>
-                          <h4 className="blog-title" style={{ fontSize: '1.2rem', color: 'var(--deep-rose)', margin: '6px 0 8px' }}>Husband's Role During Pregnancy</h4>
-                          <p className="blog-excerpt" style={{ fontSize: '0.88rem', color: 'var(--text-dark)', lineHeight: 1.5, marginBottom: '1.2rem' }}>How partners can actively support emotional well-being and labor preparation.</p>
-                          <a href="https://www.instagram.com/reel/DcOVEsvplqV/" target="_blank" rel="noopener noreferrer" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', fontSize: '0.82rem', padding: '10px 16px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none' }}>
-                            <InstagramIcon style={{ width: '16px', height: '16px' }} /> Watch Reel on Instagram ↗
-                          </a>
-                        </div>
-                      </div>
 
-                      {/* Card 3 */}
-                      <div className="blog-card glass-panel" style={{ borderRadius: '24px', overflow: 'hidden' }}>
-                        <a href="https://www.instagram.com/reel/DbN6N_qphkB/" target="_blank" rel="noopener noreferrer" style={{ position: 'relative', height: '220px', display: 'block', overflow: 'hidden', background: 'linear-gradient(135deg, #D81B60 0%, #C2185B 100%)' }}>
-                          <img src={imgFertility} alt="Exercises for Normal Delivery Thumbnail" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} />
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(136, 14, 79, 0.85) 100%)', padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', zIndex: 3 }}>
-                            <Activity style={{ position: 'absolute', right: '-10px', bottom: '-10px', width: '140px', height: '140px', opacity: 0.15, color: '#ffffff' }} />
-                            <span style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', color: '#FCE4EC' }}>Jyothsna Hospital Official Reel</span>
-                            <h4 style={{ color: '#ffffff', fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: 0, textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Exercises for Normal Delivery</h4>
+                          {/* Watch Full Video button */}
+                          <div style={{ padding: '12px 16px 14px' }}>
+                            <a
+                              href={`https://www.instagram.com/reel/${shortcode}/`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="cta-button-pink"
+                              style={{
+                                width: '100%', textAlign: 'center',
+                                fontSize: '0.85rem', padding: '11px 16px',
+                                display: 'inline-flex', alignItems: 'center',
+                                justifyContent: 'center', gap: '8px',
+                                textDecoration: 'none', borderRadius: '14px'
+                              }}
+                            >
+                              <Play style={{ width: '16px', height: '16px', fill: 'currentColor' }} /> Watch Full Video ↗
+                            </a>
                           </div>
-                          <span style={{ position: 'absolute', top: '12px', left: '12px', background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', padding: '5px 14px', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 800, zIndex: 4, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <InstagramIcon style={{ width: '12px', height: '12px' }} /> Instagram Reel
-                          </span>
-                          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.92)', color: 'var(--primary-pink)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, boxShadow: '0 8px 20px rgba(0,0,0,0.3)' }}>
-                            <Play style={{ width: '30px', height: '30px', fill: 'var(--primary-pink)', marginLeft: '4px' }} />
-                          </div>
-                        </a>
-                        <div className="blog-body" style={{ padding: '1.5rem' }}>
-                          <span className="blog-tag">Labor Prep • Fitness</span>
-                          <h4 className="blog-title" style={{ fontSize: '1.2rem', color: 'var(--deep-rose)', margin: '6px 0 8px' }}>Exercises for Normal Delivery</h4>
-                          <p className="blog-excerpt" style={{ fontSize: '0.88rem', color: 'var(--text-dark)', lineHeight: 1.5, marginBottom: '1.2rem' }}>Safe pelvic floor and gentle stretching routines recommended for natural birth.</p>
-                          <a href="https://www.instagram.com/reel/DbN6N_qphkB/" target="_blank" rel="noopener noreferrer" className="cta-button-pink" style={{ width: '100%', textAlign: 'center', fontSize: '0.82rem', padding: '10px 16px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '6px', textDecoration: 'none' }}>
-                            <InstagramIcon style={{ width: '16px', height: '16px' }} /> Watch Reel on Instagram ↗
-                          </a>
                         </div>
+                      ))}
+                    </div>
+
+                    {/* Load More / Show Less controls */}
+                    <div style={{ textAlign: 'center', marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>
+                        Showing {Math.min(visibleReels, instagramReels.length)} of {instagramReels.length} Reels
+                      </p>
+                      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                        {visibleReels < instagramReels.length && (
+                          <button
+                            onClick={() => setVisibleReels(prev => Math.min(prev + 9, instagramReels.length))}
+                            className="cta-button-pink"
+                            style={{ padding: '12px 32px', fontSize: '0.92rem', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                          >
+                            <InstagramIcon style={{ width: '18px', height: '18px' }} /> Load More Reels
+                          </button>
+                        )}
+                        {visibleReels > 9 && (
+                          <button
+                            onClick={() => setVisibleReels(9)}
+                            className="cta-button-white"
+                            style={{ padding: '12px 24px', fontSize: '0.85rem' }}
+                          >
+                            Show Less
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -2151,6 +2231,105 @@ export default function App() {
                     </div>
                   </div>
 
+                  {/* SECTION 5: Ovulation Calculator */}
+                  <div id="ovulation-calculator-section" style={{ borderTop: '2px dashed rgba(216, 27, 96, 0.15)', paddingTop: '3rem' }}>
+                    <span className="sec-tag" style={{ textAlign: 'center', marginBottom: '4px' }}>Track Your Fertile Window</span>
+                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: 'var(--deep-rose)', textAlign: 'center', marginBottom: '0.5rem' }}>
+                      Ovulation & Fertility Calculator
+                    </h3>
+                    <p style={{ textAlign: 'center', fontSize: '0.92rem', color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem', lineHeight: 1.6 }}>
+                      Know your most fertile days each cycle. Enter your last period date and average cycle length to estimate your ovulation date and fertile window.
+                    </p>
+                    <div className="glass-panel" style={{ padding: '2.5rem', borderRadius: '24px', maxWidth: '700px', margin: '0 auto' }}>
+                      <form onSubmit={handleOvulationCalculate}>
+                        <div className="form-group" style={{ marginBottom: '1.5rem' }}>
+                          <label className="form-label">First Day of Last Menstrual Period (LMP)</label>
+                          <input type="date" className="form-input" value={ovulationLmpDate} onChange={(e) => setOvulationLmpDate(e.target.value)} required />
+                        </div>
+                        <div className="form-group" style={{ marginBottom: '1.5rem' }}>
+                          <label className="form-label">Average Menstrual Cycle Length (days)</label>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <input 
+                              type="range" 
+                              min="21" max="40" 
+                              value={ovulationCycleLength} 
+                              onChange={(e) => setOvulationCycleLength(e.target.value)} 
+                              style={{ flex: 1, accentColor: 'var(--primary-pink)' }} 
+                            />
+                            <span style={{ 
+                              background: 'var(--primary-pink)', 
+                              color: '#ffffff', 
+                              padding: '6px 16px', 
+                              borderRadius: '20px', 
+                              fontWeight: 800, 
+                              fontSize: '0.95rem', 
+                              minWidth: '65px', 
+                              textAlign: 'center' 
+                            }}>
+                              {ovulationCycleLength} days
+                            </span>
+                          </div>
+                          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '6px' }}>Normal range: 21–40 days. Average is 28 days.</p>
+                        </div>
+                        <button type="submit" className="cta-button-pink" style={{ width: '100%', textAlign: 'center' }}>
+                          Calculate Ovulation & Fertile Days
+                        </button>
+                      </form>
+
+                      {ovulationResult && (
+                        <div style={{ marginTop: '2rem' }}>
+                          <div style={{ background: 'linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%)', padding: '1.2rem 1.5rem', borderRadius: '16px', marginBottom: '1rem', textAlign: 'center' }}>
+                            <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', color: 'var(--primary-pink)', fontWeight: 800, letterSpacing: '1px' }}>Your Cycle Insight</span>
+                            <p style={{ fontSize: '0.92rem', color: 'var(--text-dark)', margin: '6px 0 0', lineHeight: 1.5 }}>
+                              With a <strong>{ovulationResult.cycleLength}-day cycle</strong>, ovulation typically occurs around <strong>Day {ovulationResult.ovulationDay}</strong> of your cycle.
+                            </p>
+                          </div>
+
+                          {ovulationResult.cycles.map((cycle) => {
+                            const opts = { year: 'numeric', month: 'short', day: 'numeric' };
+                            return (
+                              <div key={cycle.cycleNum} style={{ 
+                                background: '#ffffff', 
+                                border: '1.5px solid rgba(216, 27, 96, 0.15)', 
+                                borderRadius: '18px', 
+                                padding: '1.5rem', 
+                                marginBottom: '1rem',
+                                boxShadow: '0 4px 15px rgba(0,0,0,0.04)'
+                              }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                                  <span style={{ background: 'var(--primary-pink)', color: '#fff', width: '28px', height: '28px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.85rem' }}>
+                                    {cycle.cycleNum}
+                                  </span>
+                                  <h4 style={{ margin: 0, fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: 'var(--deep-rose)' }}>Cycle {cycle.cycleNum}</h4>
+                                </div>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
+                                  <div style={{ background: 'var(--light-pink)', padding: '10px 14px', borderRadius: '12px', textAlign: 'center' }}>
+                                    <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: 'var(--primary-pink)', fontWeight: 800, display: 'block', marginBottom: '4px' }}>Ovulation Date</span>
+                                    <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--deep-rose)' }}>{cycle.ovulationDate.toLocaleDateString('en-US', opts)}</span>
+                                  </div>
+                                  <div style={{ background: '#E8F5E9', padding: '10px 14px', borderRadius: '12px', textAlign: 'center' }}>
+                                    <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: '#2E7D32', fontWeight: 800, display: 'block', marginBottom: '4px' }}>Fertile Window</span>
+                                    <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#1B5E20' }}>{cycle.fertileStart.toLocaleDateString('en-US', opts)} – {cycle.fertileEnd.toLocaleDateString('en-US', opts)}</span>
+                                  </div>
+                                  <div style={{ background: '#FFF3E0', padding: '10px 14px', borderRadius: '12px', textAlign: 'center' }}>
+                                    <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', color: '#E65100', fontWeight: 800, display: 'block', marginBottom: '4px' }}>Next Period</span>
+                                    <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#BF360C' }}>{cycle.nextPeriod.toLocaleDateString('en-US', opts)}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+
+                          <div style={{ background: '#FFF8E1', border: '1px solid #FFE082', borderRadius: '14px', padding: '1rem 1.2rem', marginTop: '0.5rem' }}>
+                            <p style={{ fontSize: '0.82rem', color: '#5D4037', margin: 0, lineHeight: 1.5 }}>
+                              <strong>⚠️ Disclaimer:</strong> This calculator provides estimates based on average cycle patterns. Individual ovulation timing may vary. For accurate fertility assessment, consult Dr. Jyothsna Rayal at Jyothsna Maternity Hospital.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </section>
@@ -2200,7 +2379,7 @@ export default function App() {
                         </div>
                         <div>
                           <h4 className="contact-item-title">Phone Helplines</h4>
-                          <p className="contact-item-text">+91 63036 74536 / +91 83095 47105 / 08571 222123</p>
+                          <p className="contact-item-text">+91 63036 74536 / +91 83095 47105</p>
                         </div>
                       </div>
 
