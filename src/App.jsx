@@ -1949,22 +1949,31 @@ export default function App() {
 
                           {/* Instagram Embed iframe */}
                           <div style={{ 
-                            height: '420px', 
+                            height: '430px', 
                             overflow: 'hidden', 
                             position: 'relative',
-                            margin: '8px 0 0'
+                            margin: '8px 0 0',
+                            background: '#ffffff'
                           }}>
                             <iframe
                               src={`https://www.instagram.com/reel/${shortcode}/embed/`}
                               width="100%"
-                              height="580"
+                              height="600"
                               frameBorder="0"
                               scrolling="no"
                               loading="lazy"
                               allowTransparency="true"
                               allow="encrypted-media"
                               title={`Instagram Reel ${idx + 1}`}
-                              style={{ border: 'none', borderRadius: '0' }}
+                              style={{ 
+                                border: 'none', 
+                                borderRadius: '0',
+                                width: '124%',
+                                height: '600px',
+                                position: 'absolute',
+                                left: '-12%',
+                                top: '0'
+                              }}
                             />
                           </div>
 
