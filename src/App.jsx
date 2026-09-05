@@ -976,22 +976,22 @@ export default function App() {
 
             {/* SECTION 3: Maternal Care & Wellness Section */}
             <section className="care-journey-section" id="maternal-care">
+              <div className="mother-absolute-left-screen">
+                <img 
+                  src="/pregnant_woman_clean.png" 
+                  alt="Pregnant Woman Care" 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'contain', 
+                    objectPosition: 'left bottom',
+                    filter: 'drop-shadow(0 15px 35px rgba(136, 14, 79, 0.3))'
+                  }} 
+                />
+              </div>
+
               <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                 <div className="maternal-care-wrapper">
-                  <div className="mother-absolute-left-screen">
-                    <img 
-                      src="/pregnant_woman_clean.png" 
-                      alt="Pregnant Woman Care" 
-                      style={{ 
-                        width: '100%', 
-                        height: '100%', 
-                        maxHeight: '100%', 
-                        objectFit: 'contain', 
-                        filter: 'drop-shadow(0 15px 35px rgba(136, 14, 79, 0.3))'
-                      }} 
-                    />
-                  </div>
-
                   <div className="maternal-care-content">
                     <span className="sec-tag">Mother & Child Healthcare</span>
                     <h2 className="sec-title" style={{ marginBottom: '1.2rem' }}>
