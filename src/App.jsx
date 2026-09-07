@@ -1692,8 +1692,12 @@ export default function App() {
                   {/* Doctor 2: Dr. Jaswanth Rayal */}
                   <div style={{ background: '#ffffff', border: '2px solid rgba(216, 27, 96, 0.25)', borderRadius: '28px', padding: '2.2rem 2rem', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.12)', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
                     <div>
-                      <div style={{ width: '140px', height: '140px', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--primary-pink)', boxShadow: '0 8px 25px rgba(216, 27, 96, 0.3)', background: 'linear-gradient(135deg, #880E4F 0%, #D81B60 100%)', margin: '0 auto 1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff' }}>
-                        <User style={{ width: '75px', height: '75px', opacity: 0.95 }} />
+                      <div style={{ width: '140px', height: '140px', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--primary-pink)', boxShadow: '0 8px 25px rgba(216, 27, 96, 0.3)', background: 'linear-gradient(180deg, #FFF0F5 0%, #F8BBD0 100%)', margin: '0 auto 1rem' }}>
+                        <img 
+                          src="/Jaswanth Rayal.png" 
+                          alt="Dr. Jaswanth Rayal MBBS, DA" 
+                          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} 
+                        />
                       </div>
 
                       <h3 style={{ fontSize: '1.75rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', margin: '0 0 4px', fontWeight: 700 }}>Dr. Jaswanth Rayal</h3>
