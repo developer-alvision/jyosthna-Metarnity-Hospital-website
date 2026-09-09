@@ -941,7 +941,7 @@ export default function App() {
                 <p style={{ textAlign: 'center', fontSize: '0.96rem', color: 'var(--text-dark)', maxWidth: '650px', margin: '0 auto 1.8rem', lineHeight: 1.6 }}>
                   Know your most fertile days each cycle. Enter your last period date and average cycle length to estimate your ovulation date and fertile window.
                 </p>
-                <div className="glass-panel" style={{ padding: '2.5rem 2.8rem', borderRadius: '24px', maxWidth: '750px', margin: '0 auto', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.1)', border: '2px solid rgba(216, 27, 96, 0.2)', background: '#ffffff' }}>
+                <div className="glass-panel calc-form-card" style={{ maxWidth: '750px', margin: '0 auto', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.1)', border: '2px solid rgba(216, 27, 96, 0.2)', background: '#ffffff' }}>
                   <form onSubmit={handleOvulationCalculate}>
                     <div className="form-group" style={{ marginBottom: '1.5rem' }}>
                       <label className="form-label" style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--deep-rose)', display: 'block', marginBottom: '8px' }}>
@@ -2290,7 +2290,7 @@ export default function App() {
                     <p style={{ textAlign: 'center', fontSize: '0.92rem', color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem', lineHeight: 1.6 }}>
                       Know your most fertile days each cycle. Enter your last period date and average cycle length to estimate your ovulation date and fertile window.
                     </p>
-                    <div className="glass-panel" style={{ padding: '2.5rem', borderRadius: '24px', maxWidth: '700px', margin: '0 auto' }}>
+                    <div className="glass-panel calc-form-card" style={{ maxWidth: '700px', margin: '0 auto' }}>
                       <form onSubmit={handleOvulationCalculate}>
                         <div className="form-group" style={{ marginBottom: '1.5rem' }}>
                           <label className="form-label">First Day of Last Menstrual Period (LMP)</label>
@@ -2638,7 +2638,7 @@ export default function App() {
       {/* 7. Appointment Booking Popup Modal */}
       {isModalOpen && (
         <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-          <div className="modal-content glass-panel" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '550px', width: '90%', padding: '2rem', borderRadius: '28px', position: 'relative' }}>
+          <div className="modal-content glass-panel" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close-btn" onClick={() => setIsModalOpen(false)} aria-label="Close Modal" style={{ position: 'absolute', top: '18px', right: '18px', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--deep-rose)' }}>
               <X />
             </button>

@@ -2005,32 +2005,53 @@ footer {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(8px);
-  z-index: 200;
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.modal-card {
+.modal-content, .modal-card {
   width: 100%;
-  max-width: 540px;
-  padding: 2.5rem;
-  position: relative;
+  max-width: 550px;
+  max-height: 90vh;
+  overflow-y: auto;
   background: var(--pure-white);
-  border-radius: 24px;
+  border-radius: 28px;
+  padding: 2.2rem 2rem;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  -webkit-overflow-scrolling: touch;
 }
 
-.modal-close {
+.modal-close-btn, .modal-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: transparent;
+  top: 18px;
+  right: 18px;
+  background: rgba(216, 27, 96, 0.08);
   border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  color: var(--text-muted);
+  color: var(--deep-rose);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover, .modal-close:hover {
+  background: var(--primary-pink);
+  color: #ffffff;
 }
 
 .modal-title {
@@ -2175,6 +2196,62 @@ footer {
   }
   .ig-reels-grid iframe {
     height: 480px !important;
+  }
+
+  /* Mobile Form & Modal Responsiveness */
+  .modal-overlay {
+    padding: 1rem 0.6rem !important;
+    align-items: flex-start !important;
+  }
+
+  .modal-content, .modal-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.5rem 1.1rem !important;
+    border-radius: 20px !important;
+    max-height: 85vh !important;
+    margin: auto 0 !important;
+  }
+
+  .booking-form-card {
+    padding: 1.4rem 1.1rem !important;
+    border-radius: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .calc-form-card {
+    padding: 1.4rem 1.1rem !important;
+    border-radius: 20px !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .form-group {
+    margin-bottom: 0.9rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    font-size: 16px !important; /* Prevents auto-zoom on mobile browsers */
+    padding: 12px 14px !important;
+    border-radius: 12px !important;
+    min-height: 48px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-textarea {
+    min-height: 75px !important;
+  }
+
+  .form-label {
+    font-size: 0.78rem !important;
+    margin-bottom: 5px !important;
   }
 
   .carousel-arrow-btn {
