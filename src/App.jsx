@@ -1067,7 +1067,7 @@ export default function App() {
                       Empowering Every Mother Through a <span>Safe & Joyful Journey</span>
                     </h2>
                     <p style={{ fontSize: '1.02rem', color: 'var(--text-dark)', lineHeight: '1.7', marginBottom: '1.8rem' }}>
-                      At <strong>Jyothsna Maternity Hospital</strong>, we celebrate motherhood as a sacred life experience. Led by chief consultant <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and Senior Anaesthesia Specialist <strong>Dr. Jaswanth Rayal, MBBS, DA</strong>, our expert medical team provides comprehensive trimester tracking, specialized high-risk pregnancy care, painless labor support, and 24/7 emergency response.
+                      At <strong>Jyothsna Maternity Hospital</strong>, we celebrate motherhood as a sacred life experience. Led by chief consultant <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and General Surgeon & Senior Anaesthesia Specialist <strong>Dr. Jaswanth A V S RAYAL, MBBS, MS (General surgery), DA</strong>, our expert medical team provides comprehensive trimester tracking, specialized high-risk pregnancy care, painless labor support, and 24/7 emergency response.
                     </p>
 
                     <div className="grid-2x2-balanced" style={{ marginBottom: '2rem' }}>
@@ -1633,7 +1633,7 @@ export default function App() {
                     Welcome to Jyothsna Maternity & General Hospital
                   </h3>
                   <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-dark)', marginBottom: '12px' }}>
-                    Founded in <strong>2018</strong> by <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and <strong>Dr. Jaswanth Rayal, MBBS, DA</strong>, our hospital has proudly supported mothers and families with <strong>3000+ successful deliveries</strong> till date in Madanapalle.
+                    Founded in <strong>2018</strong> by <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and <strong>Dr. Jaswanth A V S RAYAL, MBBS, MS (General surgery), DA</strong>, our hospital has proudly supported mothers and families with <strong>3000+ successful deliveries</strong> till date in Madanapalle.
                   </p>
                   <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-dark)', marginBottom: '16px' }}>
                     From routine antenatal checkups to <strong>painless labor epidurals, high-risk obstetrics, and 24/7 emergency surgeries</strong>, our expert doctors provide seamless, compassionate care under one roof.
@@ -1689,22 +1689,23 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Doctor 2: Dr. Jaswanth Rayal */}
+                  {/* Doctor 2: Dr. Jaswanth A V S RAYAL */}
                   <div style={{ background: '#ffffff', border: '2px solid rgba(216, 27, 96, 0.25)', borderRadius: '28px', padding: '2.2rem 2rem', boxShadow: '0 15px 40px rgba(216, 27, 96, 0.12)', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative' }}>
                     <div>
                       <div style={{ width: '140px', height: '140px', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--primary-pink)', boxShadow: '0 8px 25px rgba(216, 27, 96, 0.3)', background: 'linear-gradient(180deg, #FFF0F5 0%, #F8BBD0 100%)', margin: '0 auto 1rem' }}>
                         <img 
                           src="/Jaswanth Rayal.png" 
-                          alt="Dr. Jaswanth Rayal MBBS, DA" 
+                          alt="Dr. Jaswanth A V S RAYAL MBBS, MS (General surgery), DA" 
                           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} 
                         />
                       </div>
 
-                      <h3 style={{ fontSize: '1.75rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', margin: '0 0 4px', fontWeight: 700 }}>Dr. Jaswanth Rayal</h3>
-                      <p style={{ color: 'var(--primary-pink)', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '6px' }}>MBBS, DA (Anaesthesia Specialist)</p>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--text-dark)', lineHeight: 1.4, marginBottom: '1rem', fontWeight: 600 }}>Consultant Anaesthesiologist & Critical Care Specialist</p>
+                      <h3 style={{ fontSize: '1.75rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', margin: '0 0 4px', fontWeight: 700 }}>Dr. Jaswanth A V S RAYAL</h3>
+                      <p style={{ color: 'var(--primary-pink)', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '6px' }}>MBBS, MS (General surgery), DA</p>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--text-dark)', lineHeight: 1.4, marginBottom: '1rem', fontWeight: 600 }}>General Surgeon & Specialist Anaesthesiologist</p>
 
                       <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '1.2rem', flexWrap: 'wrap' }}>
+                        <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>General Surgery</span>
                         <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>Anaesthesia Specialist</span>
                         <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>Painless Labor Epidurals</span>
                         <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>Surgical OT Safety</span>
@@ -2499,7 +2500,7 @@ export default function App() {
                         <label className="form-label">Select Doctor</label>
                         <select name="form-doctor" className="form-select">
                           <option value="Dr. Jyothsna Rayal MS (OBG)">Dr. Jyothsna Rayal MS (OBG) — Chief Obstetrician</option>
-                          <option value="Dr. Jaswanth Rayal MBBS, DA">Dr. Jaswanth Rayal MBBS, DA — Anaesthesia Specialist</option>
+                          <option value="Dr. Jaswanth A V S RAYAL MBBS, MS (General surgery), DA">Dr. Jaswanth A V S RAYAL MBBS, MS (General surgery), DA — General Surgeon & Anaesthesia Specialist</option>
                           <option value="Any Available Specialist Doctor">Any Available Specialist Doctor</option>
                         </select>
                       </div>
@@ -2579,7 +2580,7 @@ export default function App() {
                   <span className="logo-subtitle" style={{ color: 'var(--soft-blush)' }}>Maternity Hospital</span>
                 </div>
               </a>
-              <p className="footer-desc">Founded in 2018 by Dr. Jyothsna Rayal MBBS, MS (OBG) & Dr. Jaswanth Rayal MBBS, DA (Anaesthesia Specialist), supporting mothers with 3000+ safe deliveries in Madanapalle.</p>
+              <p className="footer-desc">Founded in 2018 by Dr. Jyothsna Rayal MBBS, MS (OBG) & Dr. Jaswanth A V S RAYAL MBBS, MS (General surgery), DA, supporting mothers with 3000+ safe deliveries in Madanapalle.</p>
               <span className="footer-tagline">“Because Every Mother Deserves Safe & Caring Hands”</span>
             </div>
 
@@ -2668,7 +2669,7 @@ export default function App() {
                 <label className="form-label">Select Doctor</label>
                 <select name="modal-doctor" className="form-select">
                   <option value="Dr. Jyothsna Rayal MS (OBG)">Dr. Jyothsna Rayal MS (OBG) — Chief Obstetrician</option>
-                  <option value="Dr. Jaswanth Rayal MBBS, DA">Dr. Jaswanth Rayal MBBS, DA — Anaesthesia Specialist</option>
+                  <option value="Dr. Jaswanth A V S RAYAL MBBS, MS (General surgery), DA">Dr. Jaswanth A V S RAYAL MBBS, MS (General surgery), DA — General Surgeon & Anaesthesia Specialist</option>
                   <option value="Any Available Specialist Doctor">Any Available Specialist Doctor</option>
                 </select>
               </div>
