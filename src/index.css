@@ -1796,8 +1796,10 @@ header.scrolled {
   line-height: 1.5;
 }
 
-.booking-form-card {
-  padding: 2.5rem;
+.booking-form-card,
+.calc-form-card {
+  padding: 2.5rem 2.2rem;
+  box-sizing: border-box;
 }
 
 .form-group {
