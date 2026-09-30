@@ -1633,7 +1633,7 @@ export default function App() {
                     Welcome to Jyothsna Maternity & General Hospital
                   </h3>
                   <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-dark)', marginBottom: '12px' }}>
-                    Founded in <strong>2018</strong> by <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and <strong>Dr. Jaswanth A V S RAYAL, MBBS, MS (General surgery — Pursuing), DA</strong>, our hospital has proudly supported mothers and families with <strong>3000+ successful deliveries</strong> till date in Madanapalle.
+                    Founded in <strong>2018</strong> by <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and <strong>Dr. Jaswanth A V S RAYAL, MBBS, <span title="MS in progress" style={{ textDecorationLine: 'overline', textDecorationColor: 'var(--primary-pink)', textDecorationThickness: '2px' }}>MS</span> (General Surgery), DA</strong>, our hospital has proudly supported mothers and families with <strong>3000+ successful deliveries</strong> till date in Madanapalle.
                   </p>
                   <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-dark)', marginBottom: '16px' }}>
                     From routine antenatal checkups to <strong>painless labor epidurals, high-risk obstetrics, and 24/7 emergency surgeries</strong>, our expert doctors provide seamless, compassionate care under one roof.
