@@ -1695,21 +1695,21 @@ export default function App() {
                       <div style={{ width: '140px', height: '140px', borderRadius: '50%', overflow: 'hidden', border: '4px solid var(--primary-pink)', boxShadow: '0 8px 25px rgba(216, 27, 96, 0.3)', background: 'linear-gradient(180deg, #FFF0F5 0%, #F8BBD0 100%)', margin: '0 auto 1rem' }}>
                         <img 
                           src="/Jaswanth Rayal.png" 
-                          alt="Dr. Jaswanth A V S RAYAL MBBS, MS (General Surgery), DA"
+                          alt="Dr. Jaswanth A V S RAYAL MBBS, MS (General Surgery in progress), DA"
                           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }} 
                         />
                       </div>
 
                       <div style={{ display: 'inline-block', background: 'linear-gradient(135deg, #FFF3E0, #FFE0B2)', color: '#E65100', border: '1px solid #FFB74D', padding: '4px 14px', borderRadius: '16px', fontSize: '0.74rem', fontWeight: 800, letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '10px', boxShadow: '0 2px 6px rgba(230,81,0,0.12)' }}>
-                        🎓 MS (General Surgery)
+                        🎓 <span title="MS in progress" style={{ textDecorationLine: 'overline', textDecorationColor: 'var(--primary-pink)', textDecorationThickness: '2px' }}>MS</span> (General Surgery)
                       </div>
 
                       <h3 style={{ fontSize: '1.75rem', color: 'var(--deep-rose)', fontFamily: 'var(--font-serif)', margin: '0 0 4px', fontWeight: 700 }}>Dr. Jaswanth A V S RAYAL</h3>
-                      <p style={{ color: 'var(--primary-pink)', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '6px' }}>MBBS, MS (General Surgery), DA</p>
+                      <p style={{ color: 'var(--primary-pink)', fontWeight: 800, fontSize: '0.88rem', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '6px' }}>MBBS, <span title="MS in progress" style={{ textDecorationLine: 'overline', textDecorationColor: 'var(--primary-pink)', textDecorationThickness: '2px' }}>MS</span> (General Surgery), DA</p>
                       <p style={{ fontSize: '0.9rem', color: 'var(--text-dark)', lineHeight: 1.4, marginBottom: '1rem', fontWeight: 600 }}>General Surgeon & Specialist Anaesthesiologist</p>
 
                       <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '1.2rem', flexWrap: 'wrap' }}>
-                        <span style={{ background: '#FFF3E0', color: '#E65100', border: '1px solid #FFE0B2', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>MS General Surgery</span>
+                        <span style={{ background: '#FFF3E0', color: '#E65100', border: '1px solid #FFE0B2', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}><span title="MS in progress" style={{ textDecorationLine: 'overline', textDecorationColor: 'var(--primary-pink)', textDecorationThickness: '2px' }}>MS</span> General Surgery</span>
                         <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>Anaesthesia Specialist</span>
                         <span style={{ background: 'var(--light-pink)', color: 'var(--primary-pink)', padding: '5px 12px', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>Surgical OT Safety</span>
                       </div>
