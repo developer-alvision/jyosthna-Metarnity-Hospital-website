@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import { 
   Award, ShieldAlert, HeartHandshake, Activity, HeartPulse, Beaker, Pill, BedDouble, 
   MapPin, Phone, CheckCircle2,
@@ -55,6 +55,9 @@ const WhatsAppIcon = ({ style, className }) => (
   </svg>
 );
 
+const subscribeToYearChanges = () => () => {};
+const getCurrentYear = () => new Date().getFullYear();
+const getServerYear = () => null;
 
 
 export default function App() {
@@ -64,7 +67,7 @@ export default function App() {
       badge: "Safe Maternity Care • Madanapalle",
       title: "Because Every Mother Deserves Safe & Caring Hands",
       subtitle: "Over 3000+ Happy Births Guided By Dr. Jyothsna Rayal MS (OBG)",
-      desc: "Comprehensive pregnancy tracking, painless labor options, and 24/7 delivery emergency care.",
+      desc: "Comprehensive pregnancy tracking and 24/7 delivery emergency care.",
       image: imgC1,
       ctaPrimary: "Book Appointment",
       ctaSecondary: "Explore Services"
@@ -457,6 +460,7 @@ export default function App() {
   // Pregnancy Calculator State
   const [lmpDate, setLmpDate] = useState('');
   const [eddResult, setEddResult] = useState(null);
+  const currentYear = useSyncExternalStore(subscribeToYearChanges, getCurrentYear, getServerYear);
 
   // Ovulation Calculator State
   const [ovulationLmpDate, setOvulationLmpDate] = useState('');
@@ -628,7 +632,6 @@ export default function App() {
       points: [
         "Gentle Natural Vaginal Birth Support",
         "Continuous Baby Heartbeat (CTG) Tracking",
-        "Painless Labor & Comfort Care Options",
         "Immediate Post-Birth Mother & Baby Bonding"
       ],
       bgGradient: 'linear-gradient(135deg, #880E4F 0%, #C2185B 100%)',
@@ -1053,7 +1056,7 @@ export default function App() {
                       Empowering Every Mother Through a <span>Safe & Joyful Journey</span>
                     </h2>
                     <p style={{ fontSize: '1.02rem', color: 'var(--text-dark)', lineHeight: '1.7', marginBottom: '1.8rem' }}>
-                      At <strong>Jyothsna Maternity Hospital</strong>, we celebrate motherhood as a sacred life experience. Led by chief consultant <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and General Surgeon (Pursuing) & Senior Anaesthesia Specialist <strong>Dr. Jaswanth A V S RAYAL, MBBS, MS (General surgery — Pursuing), DA</strong>, our expert medical team provides comprehensive trimester tracking, specialized high-risk pregnancy care, painless labor support, and 24/7 emergency response.
+                      At <strong>Jyothsna Maternity Hospital</strong>, we celebrate motherhood as a sacred life experience. Led by chief consultant <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and General Surgeon (Pursuing) & Senior Anaesthesia Specialist <strong>Dr. Jaswanth A V S RAYAL, MBBS, MS (General surgery — Pursuing), DA</strong>, our expert medical team provides comprehensive trimester tracking, specialized high-risk pregnancy care, and 24/7 emergency response.
                     </p>
 
                     <div className="grid-2x2-balanced" style={{ marginBottom: '2rem' }}>
@@ -1707,10 +1710,6 @@ export default function App() {
                           <span>🏥 Surgical OT Care:</span>
                           <strong>24/7 OT & Surgery Backup</strong>
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                          <span>💉 Painless Delivery Care:</span>
-                          <strong style={{ color: 'var(--primary-pink)' }}>On Demand 24/7</strong>
-                        </div>
                       </div>
 
                       <button onClick={() => setIsModalOpen(true)} className="cta-button-pink" style={{ width: '100%', fontSize: '0.92rem', padding: '11px 18px' }}>
@@ -2000,7 +1999,7 @@ export default function App() {
                           Watch Clinical Reels & Maternity Guides
                         </h3>
                         <p style={{ fontSize: '0.95rem', color: '#FCE4EC', margin: 0, lineHeight: 1.5 }}>
-                          Follow Dr. Jyothsna Rayal MS (OBG) on Instagram for daily advice on pregnancy care, trimester tracking, painless delivery tips, and real patient stories.
+                          Follow Dr. Jyothsna Rayal MS (OBG) on Instagram for daily advice on pregnancy care, trimester tracking, and real patient stories.
                         </p>
                       </div>
                       <a href="https://www.instagram.com/jyothsnamaternity/" target="_blank" rel="noopener noreferrer" className="cta-button-white" style={{ position: 'relative', zIndex: 2, background: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)', color: '#ffffff', border: 'none', padding: '12px 24px', fontSize: '0.92rem', borderRadius: '30px', boxShadow: '0 8px 20px rgba(0,0,0,0.3)', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', fontWeight: 700 }}>
@@ -2618,7 +2617,7 @@ export default function App() {
           </div>
 
           <div className="footer-bottom">
-            <p>© {new Date().getFullYear()} Jyothsna Maternity Hospital. All rights reserved. Madanapalle, Andhra Pradesh.</p>
+            <p>© {currentYear} Jyothsna Maternity Hospital. All rights reserved. Madanapalle, Andhra Pradesh.</p>
           </div>
         </div>
       </footer>
