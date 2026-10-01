@@ -266,7 +266,7 @@ export default function App() {
     if (openFaqIds.length > 0) {
       setOpenFaqIds([]);
     } else {
-      setOpenFaqIds([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+      setOpenFaqIds([1, 2, 4, 5, 6, 8, 9, 10]);
     }
   };
 
@@ -282,12 +282,6 @@ export default function App() {
       category: 'Pregnancy & Delivery',
       question: "Does Jyothsna Hospital prioritize Normal Deliveries?",
       answer: "Yes! We strongly support natural vaginal deliveries whenever medically safe. Dr. Jyothsna provides dedicated labor support, continuous fetal CTG monitoring, gentle birth exercise guidance, and maternal care to encourage smooth natural birth."
-    },
-    {
-      id: 3,
-      category: 'Pregnancy & Delivery',
-      question: "Are Painless Delivery options (Epidural Analgesia) available?",
-      answer: "Absolutely. We offer Epidural Pain Relief (Painless Delivery) administered by experienced anaesthetists, allowing mothers to experience a comfortable and stress-free labor process while actively participating in birth."
     },
     {
       id: 4,
@@ -308,16 +302,10 @@ export default function App() {
       answer: "Dr. Jyothsna specializes in managing high-risk obstetrics including Pregnancy Induced Hypertension (Preeclampsia), Gestational Diabetes (GDM), Thyroid disorders in pregnancy, Twin/Multiple pregnancies, Prev C-Section (VBAC evaluation), and Recurrent Pregnancy Loss."
     },
     {
-      id: 7,
-      category: 'Surgeries & Emergency',
-      question: "What laparoscopic and minimally invasive gynaecology surgeries are performed?",
-      answer: "We perform advanced keyhole laparoscopic and hysteroscopic surgeries for ovarian cyst removal, uterine fibroid myomectomy, tubal testing/recanalization, ectopic pregnancy management, and laparoscopic hysterectomy with minimal pain and quick recovery."
-    },
-    {
       id: 8,
       category: 'Scans & Diagnostics',
       question: "What infertility workup and ovulation treatments are provided?",
-      answer: "We offer complete couple infertility evaluation, follicular growth tracking scans, hormonal profiling, tubal patency testing (HSG/Laparoscopy), ovulation induction, and timed intercourse protocols."
+      answer: "We offer complete couple infertility evaluation, follicular growth tracking scans, hormonal profiling, tubal patency evaluation, ovulation induction, and timed intercourse protocols."
     },
     {
       id: 9,
@@ -384,7 +372,6 @@ export default function App() {
       desc: "Positive-pressure air filtration cleanroom surgical theatre ready 24/7 for planned and emergency C-sections.",
       features: [
         "Planned & Emergency C-Section Surgeries",
-        "Advanced Keyhole Laparoscopic Surgical Unit",
         "HEPA Air Filtration & Anesthesia Workstation",
         "24/7 Instant Emergency OT Readiness"
       ],
@@ -717,10 +704,9 @@ export default function App() {
       badge: 'Gynaec Surgery',
       title: 'Treatment for Uterine Fibroids',
       image: imgFibroids,
-      desc: 'Medical management and laparoscopic surgical removal of uterine fibroids.',
+      desc: 'Medical management and personalized care for uterine fibroids.',
       points: [
         "Medical & Hormonal Fibroid Management",
-        "Laparoscopic Keyhole Fibroid Surgery",
         "Uterine Preservation & Safety Techniques",
         "Pelvic Pain & Bleeding Relief"
       ],
@@ -1200,8 +1186,8 @@ export default function App() {
 
                   <div className="advantage-card-3d" style={{ padding: '1.5rem 1.2rem', borderRadius: '22px' }}>
                     <Sparkles style={{ width: '32px', height: '32px', color: 'var(--primary-pink)', marginBottom: '10px' }} />
-                    <h3 style={{ fontSize: '1.1rem', color: 'var(--deep-rose)', fontWeight: 700, marginBottom: '6px' }}>Infertility & Laparoscopy</h3>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '0.8rem' }}>Ovulation tracking, keyhole fibroid/cyst removal, and fertility assistance.</p>
+                    <h3 style={{ fontSize: '1.1rem', color: 'var(--deep-rose)', fontWeight: 700, marginBottom: '6px' }}>Infertility Care</h3>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '0.8rem' }}>Ovulation tracking, fertility evaluation, and personalized conception support.</p>
                     <button onClick={() => navigateTo('services')} style={{ background: 'none', border: 'none', color: 'var(--primary-pink)', fontWeight: 700, cursor: 'pointer', fontSize: '0.95rem', padding: 0 }}>Learn More →</button>
                   </div>
                 </div>
@@ -1636,7 +1622,7 @@ export default function App() {
                     Founded in <strong>2018</strong> by <strong>Dr. Jyothsna Rayal, MBBS, MS (OBG)</strong> and <strong>Dr. Jaswanth A V S RAYAL, MBBS, <span title="MS in progress" style={{ textDecorationLine: 'overline', textDecorationColor: 'var(--primary-pink)', textDecorationThickness: '2px' }}>MS</span> (General Surgery), DA</strong>, our hospital has proudly supported mothers and families with <strong>3000+ successful deliveries</strong> till date in Madanapalle.
                   </p>
                   <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'var(--text-dark)', marginBottom: '16px' }}>
-                    From routine antenatal checkups to <strong>painless labor epidurals, high-risk obstetrics, and 24/7 emergency surgeries</strong>, our expert doctors provide seamless, compassionate care under one roof.
+                    From routine antenatal checkups to <strong>high-risk obstetrics and 24/7 emergency care</strong>, our expert doctors provide seamless, compassionate care under one roof.
                   </p>
                   <div style={{ fontFamily: 'var(--font-sans)', fontSize: '1.05rem', color: 'var(--primary-pink)', fontWeight: 700, paddingLeft: '14px', borderLeft: '3.5px solid var(--primary-pink)' }}>
                     “Because Every Mother Deserves Safe & Caring Hands”
